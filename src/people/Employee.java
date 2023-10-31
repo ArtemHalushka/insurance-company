@@ -33,8 +33,7 @@ public class Employee extends Person {
     public HomeInsurance issueHomeInsurance(Customer customer, String insuranceName, double price,
                                             String issueDate, String endDate, Home home) {
 
-        HomeInsurance insurance = new HomeInsurance(insuranceName, this, customer, price, issueDate, endDate, home);
-        return insurance;
+        return new HomeInsurance(insuranceName, this, customer, price, issueDate, endDate, home);
     }
 }
 
