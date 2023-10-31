@@ -1,12 +1,13 @@
 package objects;
 
 public class Vehicle {
+
     private String type;
-    private int price;
-    private int fuel;
+    private double price;
+    private String fuel;
     private int year;
 
-    public Vehicle(String type, int price, int fuel, int year) {
+    public Vehicle(String type, double price, String fuel, int year) {
         this.type = type;
         this.price = price;
         this.fuel = fuel;
