@@ -9,7 +9,7 @@ public class Employee extends Person {
 
     private String position;
 
-    public Employee(String name, String birthDate, String address, int phoneNumber) {
+    public Employee(String name, String birthDate, String address, int phoneNumber, String position) {
         super(name, birthDate, address, phoneNumber);
         this.position = position;
     }
@@ -35,6 +35,11 @@ public class Employee extends Person {
 
         HomeInsurance insurance = new HomeInsurance(insuranceName, this, customer, price, issueDate, endDate, home);
         return insurance;
+    }
+
+    @Override
+    public String toString() {
+        return "Person" + " " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " + super.getPhoneNumber() + " " + position;
     }
 }
 

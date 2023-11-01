@@ -13,4 +13,9 @@ public class Vehicle {
         this.fuel = fuel;
         this.year = year;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle" + " " + type + " " + price + " " + fuel + " " + year + " ";
+    }
 }

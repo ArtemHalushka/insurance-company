@@ -16,5 +16,11 @@ public class HealthInsurance extends Insurance {
         this.smoker = smoker;
         this.medications = medications;
     }
+
+    @Override
+    public String toString() {
+        return "Insurance" + " " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + " "
+                + super.getPrice() + " " + super.getIssueDate() + " " + super.getEndDate();
+    }
 }
 

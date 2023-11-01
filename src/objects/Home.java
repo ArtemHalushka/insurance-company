@@ -11,4 +11,9 @@ public class Home {
         this.price = price;
         this.m2 = m2;
     }
+
+    @Override
+    public String toString() {
+        return "Home" + " " + type + " " + price + " " + m2;
+    }
 }

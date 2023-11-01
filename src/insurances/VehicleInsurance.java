@@ -13,4 +13,11 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, price, issueDate, endDate);
         this.vehicleType = vehicleType;
     }
+
+    @Override
+    public String toString() {
+        return "Insurance" + " " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + " "
+                + super.getPrice() + " " + super.getIssueDate() + " " + super.getEndDate() + " " + vehicleType;
+    }
 }
+

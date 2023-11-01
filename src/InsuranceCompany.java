@@ -44,7 +44,7 @@ public class InsuranceCompany {
     }
 
     // IssuedInsurance ArrayList
-    public void addCustomer(Insurance insurance) {
+    public void addInsurance(Insurance insurance) {
         issuedInsurances.add(insurance);
     }
 

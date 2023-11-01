@@ -20,6 +20,31 @@ public class Insurance {
         this.price = price;
         this.issueDate = issueDate;
         this.endDate = endDate;
-
     }
+
+    public String getInsuranceName() {
+        return insuranceName;
+    }
+
+    public Employee getIssueEmployee() {
+        return issueEmployee;
+    }
+
+    public Customer getInsuranceCustomer() {
+        return insuranceCustomer;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getIssueDate() {
+        return issueDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+
 }
