@@ -46,5 +46,4 @@ public class Insurance {
         return endDate;
     }
 
-
 }
