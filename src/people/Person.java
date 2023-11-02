@@ -12,6 +12,21 @@ public class Person {
         this.birthDate = birthDate;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

@@ -13,4 +13,10 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, price, issueDate, endDate);
         this.homeType = homeType;
     }
+
+    @Override
+    public String toString() {
+        return "Insurance" + " " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + " "
+                + super.getPrice() + " " + super.getIssueDate() + " " + super.getEndDate() + " " + homeType;
+    }
 }
