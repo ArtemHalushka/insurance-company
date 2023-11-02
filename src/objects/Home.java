@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Objects;
+
 public class Home {
 
     private String type;
@@ -15,5 +17,24 @@ public class Home {
     @Override
     public String toString() {
         return "Home" + " " + type + " " + price + " " + m2;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        Home self = (Home) object;
+
+        return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, price, m2);
     }
 }

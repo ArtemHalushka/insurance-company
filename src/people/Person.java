@@ -1,5 +1,7 @@
 package people;
 
+import java.util.Objects;
+
 public class Person {
 
     private String name;
@@ -28,5 +30,25 @@ public class Person {
 
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        Person self = (Person) object;
+
+        return Objects.equals(birthDate, self.birthDate) && Objects.equals(name, self.name)
+                && Objects.equals(address, self.address) && Objects.equals(phoneNumber, self.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, birthDate, address, phoneNumber);
     }
 }
