@@ -47,6 +47,5 @@ public class Main {
         Printer.printAll(insuranceCompany.getCustomers());
         Printer.print(michael.equals(jina));
         Printer.print(bmw.hashCode());
-
     }
 }
