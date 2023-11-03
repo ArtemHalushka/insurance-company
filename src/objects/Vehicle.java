@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Objects;
+
 public class Vehicle {
 
     private String type;
@@ -16,6 +18,26 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle" + " " + type + " " + price + " " + fuel + " " + year + " ";
+        return "Vehicle" + " " + type + " " + price + " " + fuel + " " + year;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        Vehicle self = (Vehicle) object;
+
+        return Objects.equals(type, self.type) && Objects.equals(price, self.price)
+                && Objects.equals(fuel, self.fuel) && Objects.equals(year, self.year);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, price, fuel, year);
     }
 }

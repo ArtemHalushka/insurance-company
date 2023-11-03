@@ -1,7 +1,5 @@
 package people;
 
-import insurances.Insurance;
-
 import java.util.Arrays;
 
 public class Customer extends Person {
@@ -9,6 +7,10 @@ public class Customer extends Person {
     private String[] healthDiseases;
     private Boolean smoker;
     private String[] medications;
+
+    public Customer(String name, String birthDate, String address, int phoneNumber) {
+        super(name, birthDate, address, phoneNumber);
+    }
 
     public Customer(String name, String birthDate, String address, int phoneNumber, String[] healthDiseases, Boolean smoker, String[] medications) {
         super(name, birthDate, address, phoneNumber);

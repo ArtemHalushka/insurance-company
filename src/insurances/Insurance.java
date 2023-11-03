@@ -3,6 +3,8 @@ package insurances;
 import people.Customer;
 import people.Employee;
 
+import java.util.Objects;
+
 public class Insurance {
 
     private String insuranceName;
@@ -46,4 +48,23 @@ public class Insurance {
         return endDate;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        Insurance self = (Insurance) object;
+
+        return Objects.equals(insuranceName, self.insuranceName) && Objects.equals(insuranceCustomer, self.insuranceCustomer)
+                && Objects.equals(issueDate, self.issueDate) && Objects.equals(endDate, self.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(insuranceName, insuranceCustomer, issueDate, endDate);
+    }
 }
