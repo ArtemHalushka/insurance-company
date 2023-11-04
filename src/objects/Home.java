@@ -4,9 +4,10 @@ import java.util.Objects;
 
 public class Home {
 
-    private String type;
-    private double price;
-    private int m2;
+    private final String type;
+    private final double price;
+    private final int m2;
+    private static int objectId = 1;
 
     public Home(String type, double price, int m2) {
         this.type = type;
@@ -14,9 +15,14 @@ public class Home {
         this.m2 = m2;
     }
 
+
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
-        return "Home" + " " + type + " " + price + " " + m2;
+        return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
     }
 
     @Override

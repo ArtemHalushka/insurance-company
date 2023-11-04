@@ -5,21 +5,20 @@ import people.Employee;
 
 import java.util.Objects;
 
-public class Insurance {
+abstract public class Insurance {
 
     private String insuranceName;
     private Employee issueEmployee;
     private Customer insuranceCustomer;
-    private double price;
     private String issueDate;
     private String endDate;
+    private static int insuranceId;
 
     public Insurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
-                     double price, String issueDate, String endDate) {
+                     String issueDate, String endDate) {
         this.insuranceName = insuranceName;
         this.issueEmployee = issueEmployee;
         this.insuranceCustomer = insuranceCustomer;
-        this.price = price;
         this.issueDate = issueDate;
         this.endDate = endDate;
     }
@@ -34,10 +33,6 @@ public class Insurance {
 
     public Customer getInsuranceCustomer() {
         return insuranceCustomer;
-    }
-
-    public double getPrice() {
-        return price;
     }
 
     public String getIssueDate() {

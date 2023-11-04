@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public class Vehicle {
 
-    private String type;
-    private double price;
-    private String fuel;
-    private int year;
+    private final String type;
+    private final double price;
+    private final String fuel;
+    private final int year;
+    private static int objectId = 2;
 
     public Vehicle(String type, double price, String fuel, int year) {
         this.type = type;
@@ -18,7 +19,11 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle" + " " + type + " " + price + " " + fuel + " " + year;
+        return "Vehicle: " + "id (" + objectId + ") " + type + " " + price + " " + fuel + " " + year;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     @Override
