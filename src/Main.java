@@ -10,7 +10,6 @@ import util.IPrint;
 public class Main {
 
     public static void main(String[] args) {
-
         InsuranceCompany insuranceCompany = new InsuranceCompany("Reico");
 
         Employee jim = new Employee("Jim Turner", "10 October 1999", "United states", 919883992, "Lead");
@@ -45,5 +44,6 @@ public class Main {
         insuranceCompany.addInsurance(jinaHomeIsurance);
 
         IPrint.print(michaelInsurance);
+
     }
 }
