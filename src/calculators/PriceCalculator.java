@@ -1,4 +1,4 @@
-package Calculators;
+package calculators;
 
 import objects.Home;
 import objects.Vehicle;

@@ -8,7 +8,7 @@ import objects.*;
 public class Employee extends Person implements IIssue {
 
     private String position;
-    private static int personId = 2;
+    private static int personId = 1;
 
     public Employee(String name, String birthDate, String address, int phoneNumber, String position) {
         super(name, birthDate, address, phoneNumber);

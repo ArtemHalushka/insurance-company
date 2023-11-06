@@ -1,6 +1,6 @@
 package insurances;
 
-import Calculators.PriceCalculator;
+import calculators.PriceCalculator;
 import people.Employee;
 import people.Customer;
 import objects.Vehicle;

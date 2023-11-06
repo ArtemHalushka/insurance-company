@@ -18,7 +18,7 @@ public class InsuranceCompany {
         issuedInsurances = new ArrayList<Insurance>();
     }
 
-    public void addInsurance() {
+    public void countInsurance() {
         insuranceCount++;
     }
 
