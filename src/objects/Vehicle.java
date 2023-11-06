@@ -8,7 +8,7 @@ public class Vehicle {
     private final double price;
     private final String fuel;
     private final int year;
-    private static int objectId = 2;
+    private static int objectId = 1;
 
     public Vehicle(String type, double price, String fuel, int year) {
         this.type = type;

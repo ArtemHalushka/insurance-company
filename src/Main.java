@@ -5,7 +5,7 @@ import objects.Home;
 import objects.Vehicle;
 import people.Customer;
 import people.Employee;
-import util.IPrint;
+import util.Printer;
 
 public class Main {
 
@@ -44,6 +44,6 @@ public class Main {
         HomeInsurance jinaHomeIsurance = sam.issueHomeInsurance(jina, "Natural disaster coverage", "01.01.2007", "01.01.2030", twoFloorHome);
         insuranceCompany.addInsurance(jinaHomeIsurance);
 
-        IPrint.print(michaelInsurance);
+        Printer.print(bmw);
     }
 }

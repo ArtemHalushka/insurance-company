@@ -1,6 +1,6 @@
 package insurances;
 
-import insurancePrice.HomePrice;
+import Calculators.PriceCalculator;
 import objects.Home;
 import people.Customer;
 import people.Employee;
@@ -8,7 +8,7 @@ import people.Employee;
 public class HomeInsurance extends Insurance {
 
     private Home homeType;
-    private static int insuranceId = 2;
+    private static int insuranceId = 1;
     private double finalPrice;
 
 
@@ -17,8 +17,7 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
 
-        HomePrice homePriceCalculate = new HomePrice();
-        finalPrice = homePriceCalculate.countPrice(homeType);
+        finalPrice = PriceCalculator.countHomePrice(homeType);
     }
 
     @Override

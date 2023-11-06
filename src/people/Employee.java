@@ -5,16 +5,17 @@ import insurances.VehicleInsurance;
 import objects.*;
 
 
-public class Employee extends Person {
+public class Employee extends Person implements IIssue {
 
     private String position;
-    private static int insurancePersonId = 2;
+    private static int personId = 2;
 
     public Employee(String name, String birthDate, String address, int phoneNumber, String position) {
         super(name, birthDate, address, phoneNumber);
         this.position = position;
     }
 
+    @Override
     public VehicleInsurance issueVehicleInsurance(Customer customer, String insuranceName, String issueDate,
                                                   String endDate, Vehicle vehicle) {
 
@@ -23,6 +24,7 @@ public class Employee extends Person {
         return insurance;
     }
 
+    @Override
     public HealthInsurance issueHealthInsurance(Customer customer, String insuranceName, String issueDate, String endDate,
                                                 String[] healthDiseases, Boolean smoker, String[] medications) {
 
@@ -31,6 +33,7 @@ public class Employee extends Person {
         return insurance;
     }
 
+    @Override
     public HomeInsurance issueHomeInsurance(Customer customer, String insuranceName,
                                             String issueDate, String endDate, Home home) {
 
@@ -40,7 +43,7 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Person: " + "id (" + insurancePersonId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " + super.getPhoneNumber() + " " + position;
+        return "Person: " + "id (" + personId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " + super.getPhoneNumber() + " " + position;
     }
 }
 

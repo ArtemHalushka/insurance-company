@@ -9,12 +9,17 @@ public class InsuranceCompany {
     private ArrayList<Employee> employees;
     private ArrayList<Customer> customers;
     private ArrayList<Insurance> issuedInsurances;
+    private static int insuranceCount;
 
     public InsuranceCompany(String name) {
         this.name = name;
         employees = new ArrayList<Employee>();
         customers = new ArrayList<Customer>();
         issuedInsurances = new ArrayList<Insurance>();
+    }
+
+    public void addInsurance() {
+        insuranceCount++;
     }
 
     // Employees ArrayList

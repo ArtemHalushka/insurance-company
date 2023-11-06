@@ -2,15 +2,15 @@ package util;
 
 import java.util.ArrayList;
 
-public interface IPrint {
+public class Printer {
 
-    static <T> void printAll(ArrayList<T> list) {
+    public static <T> void printAll(ArrayList<T> list) {
         for (T i : list) {
             System.out.println(i);
         }
     }
 
-    static void print(Object i) {
+    public static void print(Object i) {
         System.out.println(i);
     }
 }

@@ -1,6 +1,6 @@
 package insurances;
 
-import insurancePrice.VehiclePrice;
+import Calculators.PriceCalculator;
 import people.Employee;
 import people.Customer;
 import objects.Vehicle;
@@ -16,8 +16,7 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
 
-        VehiclePrice vehiclePriceCalculate = new VehiclePrice();
-        finalPrice = vehiclePriceCalculate.countPrice(vehicleType);
+        finalPrice = PriceCalculator.countVehiclePrice(vehicleType);
     }
 
     @Override
