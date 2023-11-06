@@ -7,6 +7,7 @@ public class Customer extends Person {
     private String[] healthDiseases;
     private Boolean smoker;
     private String[] medications;
+    private static int insurancePersonId = 1;
 
     public Customer(String name, String birthDate, String address, int phoneNumber) {
         super(name, birthDate, address, phoneNumber);
@@ -24,7 +25,7 @@ public class Customer extends Person {
         String healthDiseasesString = Arrays.toString(healthDiseases);
         String medicationsString = Arrays.toString(medications);
 
-        return "Person" + " " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " +
-                super.getPhoneNumber() + " " + healthDiseasesString + " " + "smoker" + " " + smoker + " " + medicationsString;
+        return "Person: " + "id (" + insurancePersonId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " +
+                super.getPhoneNumber() + " " + healthDiseasesString + " " + "smoker " + smoker + " " + medicationsString;
     }
 }
