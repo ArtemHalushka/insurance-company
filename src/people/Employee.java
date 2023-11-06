@@ -39,6 +39,7 @@ public class Employee extends Person implements IIssue {
 
         HomeInsurance insurance = new HomeInsurance(insuranceName, this, customer, issueDate, endDate, home);
         return insurance;
+
     }
 
     @Override
