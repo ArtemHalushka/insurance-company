@@ -1,6 +1,8 @@
 package calculators;
 
+import objects.Health;
 import objects.Home;
+import objects.InsureObject;
 import objects.Vehicle;
 
 public class PriceCalculator {
@@ -10,22 +12,19 @@ public class PriceCalculator {
     private final static double VEHICLE_PRICE_PERCENT = 0.3;
     private final static double HEALTH_PRICE_PERCENT = 2;
 
+    private final static double MINIMAL_HEALTH_PRICE = 10;
 
-    public static double calculateVehiclePrice(Vehicle vehicle) {
-        double price = vehicle.getPrice();
-        return ((VEHICLE_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
-    }
-
-    public static double calculateHomePrice(Home home) {
-        double price = home.getPrice();
-        return ((HOME_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
-    }
-
-    public static double calculateHealthPrice(String[] healthDiseases) {
-        int count = ((String[]) healthDiseases).length;
-        if (count == 0) {
-            return 10;
+    public static double calculateInsurancePrice(InsureObject insureObject) {
+        if (insureObject instanceof Vehicle) {
+            return ((VEHICLE_PRICE_PERCENT / 100) * ((Vehicle) insureObject).getPrice() * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT);
+        } else if (insureObject instanceof Home) {
+            return ((HOME_PRICE_PERCENT / 100) * ((Home) insureObject).getPrice() * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT);
+        } else if (insureObject instanceof Health) {
+            if ((((Health) insureObject).getHealthDiseases().length) == 0) {
+                return MINIMAL_HEALTH_PRICE;
+            }
+            return ((HEALTH_PRICE_PERCENT / 100) * ((((Health) insureObject).getHealthDiseases().length) * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
         }
-        return ((HEALTH_PRICE_PERCENT / 100) * (count * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
+        return 0;
     }
 }

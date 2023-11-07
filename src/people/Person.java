@@ -7,9 +7,9 @@ public abstract class Person {
     private String name;
     private String birthDate;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
 
-    public Person(String name, String birthDate, String address, int phoneNumber) {
+    public Person(String name, String birthDate, String address, String phoneNumber) {
         this.name = name;
         this.birthDate = birthDate;
         this.address = address;
@@ -24,7 +24,7 @@ public abstract class Person {
         return birthDate;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

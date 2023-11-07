@@ -3,14 +3,17 @@ package insurances;
 import people.Customer;
 import objects.Home;
 import objects.Vehicle;
+import people.Employee;
 
 public interface IIssue {
-    VehicleInsurance issueVehicleInsurance(Customer customer, String insuranceName, String issueDate,
-                                           String endDate, Vehicle vehicle);
+    HomeInsurance issueHomeInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
+                                    String endDate);
 
-    HealthInsurance issueHealthInsurance(Customer customer, String insuranceName, String issueDate, String endDate,
-                                         String[] healthDiseases, Boolean smoker, String[] medications);
+    VehicleInsurance issueVehicleInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
+                             String endDate);
 
-    HomeInsurance issueHomeInsurance(Customer customer, String insuranceName,
-                                     String issueDate, String endDate, Home home);
+    HealthInsurance issueHealthInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
+                             String endDate);
+
+
 }

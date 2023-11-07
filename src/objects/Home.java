@@ -2,28 +2,32 @@ package objects;
 
 import java.util.Objects;
 
-public class Home implements IPrioritize {
+public class Home extends InsureObject implements IPrioritize {
 
     private final String type;
     private final double price;
     private final int m2;
-    private static int objectId = 1;
+    private int objectId = (int) (Math.random() * 10001);
+
 
     public Home(String type, double price, int m2) {
         this.type = type;
         this.price = price;
         this.m2 = m2;
+        this.objectId = objectId;
     }
 
     @Override
-    public String prioritizeInsuranceObject() {
-        if (this.price > 59000 && this.m2 > 30) {
-            return "High priority";
+    public String insuranceObjectLevel() {
+        if (price > HOME_LEVEL_PRICE && m2 > HOME_LEVEL_M2) {
+            return HIGH_LEVEL;
         }
 
-        if (this.price > 59000 || this.m2 > 30) {
-            return "Medium priority";
-        } else return "Low priority";
+        if (price > HOME_LEVEL_PRICE || m2 > HOME_LEVEL_M2) {
+            return MEDIUM_LEVEL;
+        } else {
+            return LOW_LEVEL;
+        }
     }
 
     public double getPrice() {

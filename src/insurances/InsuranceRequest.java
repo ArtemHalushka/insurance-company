@@ -2,7 +2,6 @@ package insurances;
 
 import company.InsuranceCompany;
 import people.Customer;
-import people.Employee;
 
 public class InsuranceRequest {
 
@@ -10,16 +9,16 @@ public class InsuranceRequest {
 
     private InsuranceCompany company;
 
-    private Object insureObject;
-
-    public InsuranceRequest(Customer customer, InsuranceCompany company, Object insureObject) {
+    public InsuranceRequest(Customer customer) {
         this.customer = customer;
-        this.company = company;
-        this.insureObject = insureObject;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     @Override
     public String toString() {
-        return "Customer: " + customer + " Company: " + company + " Object for insure " + insureObject;
+        return "Customer: " + customer + " Object for insure " + customer.getInsureObject();
     }
 }

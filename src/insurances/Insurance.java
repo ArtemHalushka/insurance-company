@@ -12,7 +12,7 @@ abstract public class Insurance {
     private Customer insuranceCustomer;
     private String issueDate;
     private String endDate;
-    private static int insuranceId;
+
 
     public Insurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                      String issueDate, String endDate) {
