@@ -22,7 +22,7 @@ public class PriceCalculator {
         return fullPrice = ((HOME_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
     }
 
-    public static double countHealthPrice(String[] object) {
+    public static double calculateHealthPrice(String[] healthDiseases) {
         int count = ((String[]) object).length;
         if (count == 0) {
             return 10;
