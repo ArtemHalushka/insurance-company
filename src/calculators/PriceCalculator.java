@@ -10,7 +10,7 @@ public class PriceCalculator {
     private final static double HEALTH_PRICE_PERCENT = 2;
 
 
-    public static double countVehiclePrice(Vehicle object) {
+    public static double calculateVehiclePrice(Vehicle vehicle) {
         double price = object.getPrice();
         double fullPrice;
         return fullPrice = ((VEHICLE_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
