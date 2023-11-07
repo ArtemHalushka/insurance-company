@@ -16,7 +16,7 @@ public class PriceCalculator {
         return fullPrice = ((VEHICLE_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
     }
 
-    public static double countHomePrice(Home object) {
+    public static double calculateHomePrice(Home home) {
         double price = object.getPrice();
         double fullPrice;
         return fullPrice = ((HOME_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
