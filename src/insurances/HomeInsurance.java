@@ -17,7 +17,14 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
 
-        finalPrice = PriceCalculator.countHomePrice(homeType);
+        finalPrice = PriceCalculator.calculateHomePrice(homeType);
+        if (homeType.prioritizeInsuranceObject().equals("High priority")) {
+            finalPrice = finalPrice - (finalPrice/10);
+        }
+        if (homeType.prioritizeInsuranceObject().equals("Low priority")) {
+            finalPrice = finalPrice + (finalPrice/10);
+        }
+
     }
 
     @Override

@@ -12,24 +12,20 @@ public class PriceCalculator {
 
 
     public static double calculateVehiclePrice(Vehicle vehicle) {
-        double price = object.getPrice();
+        double price = vehicle.getPrice();
         return ((VEHICLE_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
     }
 
     public static double calculateHomePrice(Home home) {
-        double price = object.getPrice();
-        double fullPrice;
-        return fullPrice = ((HOME_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
+        double price = home.getPrice();
+        return ((HOME_PRICE_PERCENT / 100) * price) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
     }
 
     public static double calculateHealthPrice(String[] healthDiseases) {
-        int count = ((String[]) object).length;
+        int count = ((String[]) healthDiseases).length;
         if (count == 0) {
             return 10;
         }
-        double fullPrice;
-        return fullPrice = ((HEALTH_PRICE_PERCENT / 100) * (count * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
+        return ((HEALTH_PRICE_PERCENT / 100) * (count * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
     }
-
-
 }

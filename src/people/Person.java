@@ -8,7 +8,6 @@ public abstract class Person {
     private String birthDate;
     private String address;
     private int phoneNumber;
-    private static int insurancePersonId;
 
     public Person(String name, String birthDate, String address, int phoneNumber) {
         this.name = name;

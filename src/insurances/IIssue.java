@@ -1,8 +1,6 @@
-package people;
+package insurances;
 
-import insurances.HealthInsurance;
-import insurances.HomeInsurance;
-import insurances.VehicleInsurance;
+import people.Customer;
 import objects.Home;
 import objects.Vehicle;
 

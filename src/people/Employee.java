@@ -1,8 +1,8 @@
 package people;
 
 import insurances.*;
-import insurances.VehicleInsurance;
 import objects.*;
+import company.InsuranceCompany;
 
 
 public class Employee extends Person implements IIssue {
@@ -21,6 +21,7 @@ public class Employee extends Person implements IIssue {
 
         VehicleInsurance insurance = new VehicleInsurance(insuranceName, this, customer,
                  issueDate, endDate, vehicle);
+        InsuranceCompany.countInsurance();
         return insurance;
     }
 
@@ -30,6 +31,7 @@ public class Employee extends Person implements IIssue {
 
         HealthInsurance insurance = new HealthInsurance(insuranceName, this, customer, issueDate,
                 endDate, healthDiseases, smoker, medications);
+        InsuranceCompany.countInsurance();
         return insurance;
     }
 
@@ -38,6 +40,7 @@ public class Employee extends Person implements IIssue {
                                             String issueDate, String endDate, Home home) {
 
         HomeInsurance insurance = new HomeInsurance(insuranceName, this, customer, issueDate, endDate, home);
+        InsuranceCompany.countInsurance();
         return insurance;
 
     }

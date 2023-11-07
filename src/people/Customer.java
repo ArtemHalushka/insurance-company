@@ -2,7 +2,12 @@ package people;
 
 import java.util.Arrays;
 
-public class Customer extends Person {
+import company.InsuranceCompany;
+import insurances.IRequest;
+import insurances.Insurance;
+import insurances.InsuranceRequest;
+
+public class Customer extends Person implements IRequest {
 
     private String[] healthDiseases;
     private Boolean smoker;
@@ -18,6 +23,13 @@ public class Customer extends Person {
         this.healthDiseases = healthDiseases;
         this.smoker = smoker;
         this.medications = medications;
+    }
+
+    @Override
+    public InsuranceRequest requestInsurance(InsuranceCompany company, Object insureObject) {
+        InsuranceRequest request = new InsuranceRequest(this, company, insureObject);
+        company.addRequest(request);
+        return request;
     }
 
     @Override

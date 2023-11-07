@@ -16,7 +16,13 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
 
-        finalPrice = PriceCalculator.countVehiclePrice(vehicleType);
+        finalPrice = PriceCalculator.calculateVehiclePrice(vehicleType);
+        if (vehicleType.prioritizeInsuranceObject().equals("High priority")) {
+            finalPrice = finalPrice - (finalPrice/20);
+        }
+        if (vehicleType.prioritizeInsuranceObject().equals("Low priority")) {
+            finalPrice = finalPrice + (finalPrice/20);
+        }
     }
 
     @Override

@@ -2,7 +2,7 @@ package objects;
 
 import java.util.Objects;
 
-public class Home {
+public class Home implements IPrioritize {
 
     private final String type;
     private final double price;
@@ -15,6 +15,16 @@ public class Home {
         this.m2 = m2;
     }
 
+    @Override
+    public String prioritizeInsuranceObject() {
+        if (this.price > 59000 && this.m2 > 30) {
+            return "High priority";
+        }
+
+        if (this.price > 59000 || this.m2 > 30) {
+            return "Medium priority";
+        } else return "Low priority";
+    }
 
     public double getPrice() {
         return price;

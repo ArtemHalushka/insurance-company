@@ -19,8 +19,7 @@ public class HealthInsurance extends Insurance {
         this.smoker = smoker;
         this.medications = medications;
 
-
-        finalPrice = PriceCalculator.countHealthPrice(healthDiseases);
+        finalPrice = PriceCalculator.calculateHealthPrice(healthDiseases);
     }
 
     @Override

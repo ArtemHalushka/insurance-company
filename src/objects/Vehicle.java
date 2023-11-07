@@ -2,7 +2,7 @@ package objects;
 
 import java.util.Objects;
 
-public class Vehicle {
+public class Vehicle implements IPrioritize {
 
     private final String type;
     private final double price;
@@ -15,6 +15,17 @@ public class Vehicle {
         this.price = price;
         this.fuel = fuel;
         this.year = year;
+    }
+
+    @Override
+    public String prioritizeInsuranceObject() {
+        if (this.price > 9999 && this.year > 2010) {
+            return "High priority";
+        }
+
+        if (this.price > 9999 || this.year > 2010) {
+            return "Medium priority";
+        } else return "Low priority";
     }
 
     @Override

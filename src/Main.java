@@ -1,3 +1,4 @@
+import company.InsuranceCompany;
 import insurances.HealthInsurance;
 import insurances.HomeInsurance;
 import insurances.VehicleInsurance;
@@ -34,19 +35,16 @@ public class Main {
         HealthInsurance michaelInsurance = sam.issueHealthInsurance(michael, "High health coverage", "22.10.2022", "22.10.2024",
                 michaelHealthDiseases, michaelIsSmoker, michaelMedications);
         insuranceCompany.addInsurance(michaelInsurance);
-        insuranceCompany.countInsurance();
 
         Vehicle bmw = new Vehicle("5 Series", 15000, "Gas", 2007);
         VehicleInsurance jimVehcileInsurance = jim.issueVehicleInsurance(lena, "Business vehicle coverage", "09.01.2023", "09.01.2025", bmw);
         insuranceCompany.addInsurance(jimVehcileInsurance);
-        insuranceCompany.countInsurance();
 
         Home twoFloorHome = new Home("5 Bedroom home with balcony", 200000, 300);
         HomeInsurance jinaHomeIsurance = sam.issueHomeInsurance(jina, "Natural disaster coverage", "01.01.2007", "01.01.2030", twoFloorHome);
         insuranceCompany.addInsurance(jinaHomeIsurance);
-        insuranceCompany.countInsurance();
 
-        Printer.print(bmw);
-
+        Printer.print(jina.requestInsurance(insuranceCompany, bmw));
+        Printer.printAll(insuranceCompany.getRequests());
     }
 }
