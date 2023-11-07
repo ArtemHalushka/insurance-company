@@ -4,6 +4,7 @@ import objects.Home;
 import objects.Vehicle;
 
 public class PriceCalculator {
+
     private final static double INSURANCE_COMPANY_COEFFICIENT = 10;
     private final static double HOME_PRICE_PERCENT = 0.1;
     private final static double VEHICLE_PRICE_PERCENT = 0.3;
