@@ -50,7 +50,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue {
         return insurance;
     }
 
-    public static void countInsurance() {
+    public static void increaseInsuranceCount() {
         insuranceCount++;
     }
 
