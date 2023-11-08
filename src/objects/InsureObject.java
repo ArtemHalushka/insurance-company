@@ -2,5 +2,9 @@ package objects;
 
 public abstract class InsureObject {
 
-    private int objectID;
+    protected int objectID;
+
+    public InsureObject() {
+        this.objectID = (int) (Math.random() * 10001);
+    }
 }
