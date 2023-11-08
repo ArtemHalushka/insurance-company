@@ -12,6 +12,7 @@ public class Vehicle extends InsureObject implements IPrioritize {
 
 
     public Vehicle(String type, double price, String fuel, int year) {
+        super()
         this.type = type;
         this.price = price;
         this.fuel = fuel;
