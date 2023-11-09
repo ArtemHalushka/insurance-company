@@ -1,6 +1,6 @@
 package objects;
 
-public interface IPrioritize {
+public interface ILevel {
 
     String HIGH_LEVEL = "High level";
     String MEDIUM_LEVEL = "Medium level";

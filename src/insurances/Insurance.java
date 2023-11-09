@@ -13,7 +13,6 @@ abstract public class Insurance {
     private String issueDate;
     private String endDate;
 
-
     public Insurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                      String issueDate, String endDate) {
         this.insuranceName = insuranceName;
@@ -22,27 +21,21 @@ abstract public class Insurance {
         this.issueDate = issueDate;
         this.endDate = endDate;
     }
-
     public String getInsuranceName() {
         return insuranceName;
     }
-
     public Employee getIssueEmployee() {
         return issueEmployee;
     }
-
     public Customer getInsuranceCustomer() {
         return insuranceCustomer;
     }
-
     public String getIssueDate() {
         return issueDate;
     }
-
     public String getEndDate() {
         return endDate;
     }
-
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -51,13 +44,10 @@ abstract public class Insurance {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-
         Insurance self = (Insurance) object;
-
         return Objects.equals(insuranceName, self.insuranceName) && Objects.equals(insuranceCustomer, self.insuranceCustomer)
                 && Objects.equals(issueDate, self.issueDate) && Objects.equals(endDate, self.endDate);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(insuranceName, insuranceCustomer, issueDate, endDate);

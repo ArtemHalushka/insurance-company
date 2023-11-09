@@ -2,7 +2,7 @@ package objects;
 
 import java.util.Objects;
 
-public class Home extends InsureObject implements IPrioritize {
+public class Home extends InsureObject implements ILevel {
 
     private final String type;
     private final double price;
@@ -15,7 +15,6 @@ public class Home extends InsureObject implements IPrioritize {
         this.m2 = m2;
         this.objectId = objectId;
     }
-
     @Override
     public String insuranceObjectLevel() {
         if (price > HOME_LEVEL_PRICE && m2 > HOME_LEVEL_M2) {
@@ -28,16 +27,13 @@ public class Home extends InsureObject implements IPrioritize {
             return LOW_LEVEL;
         }
     }
-
     public double getPrice() {
         return price;
     }
-
     @Override
     public String toString() {
         return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
     }
-
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -46,12 +42,9 @@ public class Home extends InsureObject implements IPrioritize {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-
         Home self = (Home) object;
-
         return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(type, price, m2);
