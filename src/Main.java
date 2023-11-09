@@ -14,7 +14,7 @@ public class Main {
     }
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws InvalidPriceException, InvalidM2Exception {
+    public static void main(String[] args) throws InvalidPriceException, InvalidM2Exception, IllegalArgumentException {
         InsuranceCompany insuranceCompany = new InsuranceCompany("Reico");
 
         Employee jim = new Employee("Jim Turner", "10 October 1999", "United states", "919883992", "Lead");
@@ -51,6 +51,5 @@ public class Main {
         insuranceCompany.addInsurance(jinaHomeInsurance);
 
         LOGGER.info("dadadada", jinaHomeInsurance);
-
     }
 }

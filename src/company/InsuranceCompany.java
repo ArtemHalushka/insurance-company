@@ -22,7 +22,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                    String endDate) throws InvalidPriceException, InvalidM2Exception {
+                                    String endDate) throws InvalidPriceException, InvalidM2Exception, IllegalArgumentException{
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
             try {
                 if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < IExceptionConstants.INVALID_VEHICLE_PRICE) {
