@@ -1,12 +1,20 @@
 import company.InsuranceCompany;
+import exceptions.InvalidM2Exception;
+import exceptions.InvalidPriceException;
 import insurances.*;
 import people.Customer;
 import people.Employee;
 import util.Printer;
+import org.apache.logging.log4j.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
+    public static void main(String[] args) throws InvalidPriceException, InvalidM2Exception {
         InsuranceCompany insuranceCompany = new InsuranceCompany("Reico");
 
         Employee jim = new Employee("Jim Turner", "10 October 1999", "United states", "919883992", "Lead");
@@ -42,6 +50,7 @@ public class Main {
 
         insuranceCompany.addInsurance(jinaHomeInsurance);
 
-        Printer.printAll(insuranceCompany.getIssuedInsurances());
+        LOGGER.info("dadadada", jinaHomeInsurance);
+
     }
 }
