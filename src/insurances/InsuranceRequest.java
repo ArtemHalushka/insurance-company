@@ -9,9 +9,11 @@ public class InsuranceRequest {
     public InsuranceRequest(Customer customer) {
         this.customer = customer;
     }
+
     public Customer getCustomer() {
         return customer;
     }
+
     @Override
     public String toString() {
         return "Customer: " + customer + " Object for insure " + customer.getInsureObject();

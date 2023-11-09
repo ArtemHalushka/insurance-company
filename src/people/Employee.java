@@ -8,6 +8,7 @@ public class Employee extends Person {
         super(name, birthDate, address, phoneNumber);
         this.position = position;
     }
+
     @Override
     public String toString() {
         return "Person: " + "id (" + personId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " + super.getPhoneNumber() + " " + position;

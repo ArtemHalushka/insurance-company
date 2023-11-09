@@ -17,6 +17,7 @@ public class Vehicle extends InsureObject implements ILevel {
         this.year = year;
         this.objectId = objectId;
     }
+
     @Override
     public String insuranceObjectLevel() {
         if (price > VEHICLE_LEVEL_PRICE && year > VEHICLE_LEVEL_YEAR) {
@@ -28,13 +29,16 @@ public class Vehicle extends InsureObject implements ILevel {
             return LOW_LEVEL;
         }
     }
+
     @Override
     public String toString() {
         return "Vehicle: " + "id (" + objectId + ") " + type + " " + price + " " + fuel + " " + year;
     }
+
     public double getPrice() {
         return price;
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -47,6 +51,7 @@ public class Vehicle extends InsureObject implements ILevel {
         return Objects.equals(type, self.type) && Objects.equals(price, self.price)
                 && Objects.equals(fuel, self.fuel) && Objects.equals(year, self.year);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(type, price, fuel, year);

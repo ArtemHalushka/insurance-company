@@ -13,6 +13,7 @@ public class HealthInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         finalPrice = PriceCalculator.calculateInsurancePrice(insuranceCustomer.getInsureObject());
     }
+
     @Override
     public String toString() {
         return "Insurance: " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + "Price "

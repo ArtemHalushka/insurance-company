@@ -16,12 +16,15 @@ public abstract class Person {
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
+
     public String getName() {
         return name;
     }
+
     public String getBirthDate() {
         return birthDate;
     }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -29,6 +32,7 @@ public abstract class Person {
     public String getAddress() {
         return address;
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -41,6 +45,7 @@ public abstract class Person {
         return Objects.equals(birthDate, self.birthDate) && Objects.equals(name, self.name)
                 && Objects.equals(address, self.address) && Objects.equals(phoneNumber, self.phoneNumber);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, birthDate, address, phoneNumber);

@@ -15,6 +15,7 @@ public class Home extends InsureObject implements ILevel {
         this.m2 = m2;
         this.objectId = objectId;
     }
+
     @Override
     public String insuranceObjectLevel() {
         if (price > HOME_LEVEL_PRICE && m2 > HOME_LEVEL_M2) {
@@ -27,13 +28,16 @@ public class Home extends InsureObject implements ILevel {
             return LOW_LEVEL;
         }
     }
+
     public double getPrice() {
         return price;
     }
+
     @Override
     public String toString() {
         return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -45,6 +49,7 @@ public class Home extends InsureObject implements ILevel {
         Home self = (Home) object;
         return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(type, price, m2);

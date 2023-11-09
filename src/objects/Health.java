@@ -15,15 +15,19 @@ public class Health extends InsureObject {
         this.medications = medications;
         this.objectId = objectId;
     }
+
     public String[] getHealthDiseases() {
         return healthDiseases;
     }
+
     public String[] getMedications() {
         return medications;
     }
+
     public boolean isSmoker() {
         return smoker;
     }
+
     @Override
     public String toString() {
         String healthDiseasesString = Arrays.toString(healthDiseases);

@@ -23,6 +23,7 @@ public class VehicleInsurance extends Insurance {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }
+
     @Override
     public String toString() {
         return "Insurance: " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + " Price "
