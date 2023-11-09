@@ -1,6 +1,5 @@
 import company.InsuranceCompany;
 import insurances.*;
-import objects.Health;
 import people.Customer;
 import people.Employee;
 import util.Printer;

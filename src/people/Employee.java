@@ -1,10 +1,5 @@
 package people;
 
-import insurances.*;
-import objects.*;
-import company.InsuranceCompany;
-
-
 public class Employee extends Person {
 
     private String position;

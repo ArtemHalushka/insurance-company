@@ -1,7 +1,5 @@
 package people;
 
-import company.InsuranceCompany;
-import insurances.InsuranceRequest;
 import objects.Health;
 import objects.InsureObject;
 import objects.Vehicle;

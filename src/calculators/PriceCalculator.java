@@ -11,7 +11,6 @@ public class PriceCalculator {
     private final static double HOME_PRICE_PERCENT = 0.1;
     private final static double VEHICLE_PRICE_PERCENT = 0.3;
     private final static double HEALTH_PRICE_PERCENT = 2;
-
     private final static double MINIMAL_HEALTH_PRICE = 10;
 
     public static double calculateInsurancePrice(InsureObject insureObject) {

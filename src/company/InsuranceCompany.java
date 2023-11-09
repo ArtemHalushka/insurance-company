@@ -25,17 +25,17 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
             VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(),
                     issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
-            InsuranceCompany.countInsurance();
+            insuranceCount++;
             return insurance;
         } else if (request.getCustomer().getInsureObject() instanceof Home) {
             HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(),
                     issueDate, endDate, (Home) request.getCustomer().getInsureObject());
-            InsuranceCompany.countInsurance();
+            insuranceCount++;
             return insurance;
         } else if (request.getCustomer().getInsureObject() instanceof Health) {
             HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(),
                     issueDate, endDate);
-            InsuranceCompany.countInsurance();
+            insuranceCount++;
             return insurance;
         } else {
             return null;
@@ -49,7 +49,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         return request;
     }
 
-    public static void countInsurance() {
+    public static void increaseInsuranceCount() {
         insuranceCount++;
     }
 
