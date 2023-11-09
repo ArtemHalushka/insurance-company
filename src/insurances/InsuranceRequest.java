@@ -1,13 +1,10 @@
 package insurances;
 
-import company.InsuranceCompany;
 import people.Customer;
 
 public class InsuranceRequest {
 
     private Customer customer;
-
-    private InsuranceCompany company;
 
     public InsuranceRequest(Customer customer) {
         this.customer = customer;

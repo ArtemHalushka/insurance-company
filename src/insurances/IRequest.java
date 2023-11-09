@@ -2,9 +2,10 @@ package insurances;
 
 import company.InsuranceCompany;
 import objects.InsureObject;
+import people.Customer;
 
 public interface IRequest {
 
-    InsuranceRequest requestInsurance(InsuranceCompany company);
+    InsuranceRequest requestInsurance(Customer customer);
 
 }

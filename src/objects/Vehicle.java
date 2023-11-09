@@ -8,10 +8,10 @@ public class Vehicle extends InsureObject implements IPrioritize {
     private final double price;
     private final String fuel;
     private final int year;
-    private int objectId = (int) (Math.random() * 10001);
 
 
     public Vehicle(String type, double price, String fuel, int year) {
+        super();
         this.type = type;
         this.price = price;
         this.fuel = fuel;

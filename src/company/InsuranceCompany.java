@@ -1,13 +1,12 @@
 package company;
 
 import insurances.*;
-import objects.Home;
-import objects.Vehicle;
+import objects.*;
 import people.*;
 
 import java.util.ArrayList;
 
-public class InsuranceCompany implements ICompanyManage, IIssue {
+public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     private String name;
     private ArrayList<Employee> employees = new ArrayList<>();
@@ -21,33 +20,33 @@ public class InsuranceCompany implements ICompanyManage, IIssue {
     }
 
     @Override
-    public VehicleInsurance issueVehicleInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                           String endDate) {
-
-        VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(),
-                issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
-        InsuranceCompany.countInsurance();
-        return insurance;
+    public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
+                                    String endDate) {
+        if (request.getCustomer().getInsureObject() instanceof Vehicle) {
+            VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(),
+                    issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
+            InsuranceCompany.countInsurance();
+            return insurance;
+        } else if (request.getCustomer().getInsureObject() instanceof Home) {
+            HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(),
+                    issueDate, endDate, (Home) request.getCustomer().getInsureObject());
+            InsuranceCompany.countInsurance();
+            return insurance;
+        } else if (request.getCustomer().getInsureObject() instanceof Health) {
+            HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(),
+                    issueDate, endDate);
+            InsuranceCompany.countInsurance();
+            return insurance;
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public HealthInsurance issueHealthInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                          String endDate) {
-
-        HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(),
-                issueDate, endDate);
-        InsuranceCompany.countInsurance();
-        return insurance;
-    }
-
-    @Override
-    public HomeInsurance issueHomeInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                                String endDate) {
-
-        HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(),
-                issueDate, endDate, (Home) request.getCustomer().getInsureObject());
-        InsuranceCompany.countInsurance();
-        return insurance;
+    public InsuranceRequest requestInsurance(Customer customer) {
+        InsuranceRequest request = new InsuranceRequest(customer);
+        addRequest(request);
+        return request;
     }
 
     public static void countInsurance() {
@@ -102,7 +101,8 @@ public class InsuranceCompany implements ICompanyManage, IIssue {
     }
 
     @Override
-    public void removeInsurance(InsuranceRequest request) {requests.remove(request);
+    public void removeInsurance(InsuranceRequest request) {
+        requests.remove(request);
     }
 
     public ArrayList<InsuranceRequest> getRequests() {

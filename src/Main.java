@@ -1,8 +1,6 @@
 import company.InsuranceCompany;
-import insurances.HealthInsurance;
-import insurances.HomeInsurance;
-import insurances.InsuranceRequest;
-import insurances.VehicleInsurance;
+import insurances.*;
+import objects.Health;
 import people.Customer;
 import people.Employee;
 import util.Printer;
@@ -23,25 +21,25 @@ public class Main {
         boolean michaelIsSmoker = true;
         Customer michael = new Customer("Michael Flint", "11 December 2001", "United states",
                 "8839021", michaelHealthDiseases, michaelIsSmoker, michaelMedications);
-        InsuranceRequest michaelRequest = michael.requestInsurance(insuranceCompany);
+        InsuranceRequest michaelRequest = insuranceCompany.requestInsurance(michael);
         insuranceCompany.addCustomer(michael);
 
         Customer lena = new Customer("Lena Lorens", "22 June 2000", "United States", "9901243", "5 Series", 15000, "Gas", 2007);
         insuranceCompany.addCustomer(lena);
-        InsuranceRequest lenaRequest = lena.requestInsurance(insuranceCompany);
+        InsuranceRequest lenaRequest = insuranceCompany.requestInsurance(lena);
 
         Customer jina = new Customer("Jina Lopez", "27 September", "Canada", "98492034", "5 Bedroom", 200000, 300);
         insuranceCompany.addCustomer(jina);
-        InsuranceRequest jinaRequest = jina.requestInsurance(insuranceCompany);
+        InsuranceRequest jinaRequest = insuranceCompany.requestInsurance(jina);
 
-        HealthInsurance michaelInsurance = insuranceCompany.issueHealthInsurance(michaelRequest, sam, "health", "09.01.2023", "09.01.2025");
+        Insurance michaelInsurance = insuranceCompany.issueInsurance(michaelRequest, sam, "health", "09.01.2023", "09.01.2025");
         insuranceCompany.addInsurance(michaelInsurance);
 
-        VehicleInsurance lenaVehicleInsurance = insuranceCompany.issueVehicleInsurance(lenaRequest, jim, "vehicle", "09.01.2023", "09.01.2025");
+        Insurance lenaVehicleInsurance = insuranceCompany.issueInsurance(lenaRequest, jim, "vehicle", "09.01.2023", "09.01.2025");
 
         insuranceCompany.addInsurance(lenaVehicleInsurance);
 
-        HomeInsurance jinaHomeInsurance = insuranceCompany.issueHomeInsurance(jinaRequest, jim, "home", "09.01.2023", "09.01.2025");
+        Insurance jinaHomeInsurance = insuranceCompany.issueInsurance(jinaRequest, jim, "home", "09.01.2023", "09.01.2025");
 
         insuranceCompany.addInsurance(jinaHomeInsurance);
 

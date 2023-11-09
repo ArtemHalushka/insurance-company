@@ -7,10 +7,9 @@ public class Home extends InsureObject implements IPrioritize {
     private final String type;
     private final double price;
     private final int m2;
-    private int objectId = (int) (Math.random() * 10001);
-
 
     public Home(String type, double price, int m2) {
+        super();
         this.type = type;
         this.price = price;
         this.m2 = m2;

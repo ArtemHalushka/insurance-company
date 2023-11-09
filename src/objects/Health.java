@@ -7,10 +7,10 @@ public class Health extends InsureObject {
     private String[] healthDiseases;
     private boolean smoker;
     private String[] medications;
-    private int objectId = (int) (Math.random() * 10001);
 
 
     public Health(String[] healthDiseases, boolean smoker, String[] medications) {
+        super();
         this.healthDiseases = healthDiseases;
         this.smoker = smoker;
         this.medications = medications;

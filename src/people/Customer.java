@@ -1,18 +1,16 @@
 package people;
 
 import company.InsuranceCompany;
-import insurances.IRequest;
 import insurances.InsuranceRequest;
 import objects.Health;
 import objects.InsureObject;
 import objects.Vehicle;
 import objects.Home;
 
-public class Customer extends Person implements IRequest {
+public class Customer extends Person {
 
     private InsureObject object;
     private int personId = (int) (Math.random() * 10001);
-
 
 
     public Customer(String name, String birthDate, String address, String phoneNumber, String[] healthDiseases, Boolean smoker, String[] medications) {
@@ -31,13 +29,9 @@ public class Customer extends Person implements IRequest {
         this.object = new Home(homeType, price, m2);
     }
 
-    @Override
-    public InsuranceRequest requestInsurance(InsuranceCompany company) {
-        InsuranceRequest request = new InsuranceRequest(this);
-        company.addRequest(request);
-        return request;
+    public InsureObject getInsureObject() {
+        return object;
     }
-    public InsureObject getInsureObject() { return object; }
 
     @Override
     public String toString() {
