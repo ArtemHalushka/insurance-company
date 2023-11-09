@@ -33,6 +33,10 @@ public class Home extends InsureObject implements ILevel {
         return price;
     }
 
+    public int getM2() {
+        return m2;
+    }
+
     @Override
     public String toString() {
         return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
