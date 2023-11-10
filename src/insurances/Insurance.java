@@ -13,6 +13,7 @@ abstract public class Insurance {
     private Customer insuranceCustomer;
     private Date issueDate;
     private Date endDate;
+    protected double finalPrice;
 
     public Insurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                      Date issueDate, Date endDate) {

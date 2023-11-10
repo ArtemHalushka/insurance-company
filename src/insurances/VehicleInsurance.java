@@ -11,7 +11,6 @@ import java.util.Date;
 public class VehicleInsurance extends Insurance {
 
     private Vehicle vehicleType;
-    private double finalPrice;
 
     public VehicleInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                             Date issueDate, Date endDate, Vehicle vehicleType) {

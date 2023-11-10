@@ -11,7 +11,6 @@ import java.util.Date;
 public class HomeInsurance extends Insurance {
 
     private Home homeType;
-    private double finalPrice;
 
     public HomeInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                          Date issueDate, Date endDate, Home homeType) {

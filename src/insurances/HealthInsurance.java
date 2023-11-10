@@ -8,8 +8,6 @@ import java.util.Date;
 
 public class HealthInsurance extends Insurance {
 
-    private double finalPrice;
-
     public HealthInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                            Date issueDate, Date endDate) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
