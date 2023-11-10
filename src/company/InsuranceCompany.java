@@ -59,10 +59,6 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         return request;
     }
 
-    public static void increaseInsuranceCount() {
-        insuranceCount++;
-    }
-
     @Override
     public void addEmployee(Employee employee) {
         employees.add(employee);
