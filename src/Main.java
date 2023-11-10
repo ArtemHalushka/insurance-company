@@ -22,6 +22,7 @@ public class Main {
         String[] michaelHealthDiseases = {"Diabetes", "High blood pressure"};
         String[] michaelMedications = {"Mezim"};
         boolean michaelIsSmoker = true;
+
         try {
             Employee jim = new Employee("Jim Turner", dateFormat.parse("10-10-1999"), "United states", "919883992", "Lead");
             insuranceCompany.addEmployee(jim);
