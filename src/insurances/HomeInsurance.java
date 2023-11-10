@@ -6,13 +6,14 @@ import objects.ILevel;
 import people.Customer;
 import people.Employee;
 
+import java.util.Date;
+
 public class HomeInsurance extends Insurance {
 
     private Home homeType;
-    private double finalPrice;
 
     public HomeInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
-                         String issueDate, String endDate, Home homeType) {
+                         Date issueDate, Date endDate, Home homeType) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
         finalPrice = PriceCalculator.calculateInsurancePrice(homeType);

@@ -4,12 +4,12 @@ import calculators.PriceCalculator;
 import people.Customer;
 import people.Employee;
 
+import java.util.Date;
+
 public class HealthInsurance extends Insurance {
 
-    private double finalPrice;
-
     public HealthInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
-                           String issueDate, String endDate) {
+                           Date issueDate, Date endDate) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         finalPrice = PriceCalculator.calculateInsurancePrice(insuranceCustomer.getInsureObject());
     }
