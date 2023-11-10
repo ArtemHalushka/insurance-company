@@ -1,6 +1,6 @@
 package exceptions;
 
-public interface IExceptionConstants {
+public interface IInsuranceObjectParameter {
 
     double INVALID_VEHICLE_PRICE = 500;
     double INVALID_HOME_PRICE = 2000;
