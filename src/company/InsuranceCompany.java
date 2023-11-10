@@ -37,7 +37,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
                     throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_PRICE);
                 }
                 if (((Home) request.getCustomer().getInsureObject()).getM2() < IInsuranceObjectParameter.INVALID_HOME_M2) {
-                    throw new InvalidM2Exception("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_M2);
+                    throw new InvalidM2Exception("Wrong M2. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_M2);
                 }
                 HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(),
                         issueDate, endDate, (Home) request.getCustomer().getInsureObject());
@@ -53,7 +53,10 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public InsuranceRequest requestInsurance(Customer customer) {
+    public InsuranceRequest requestInsurance(Customer customer) throws InvalidPersonException {
+        if (customer == null) {
+            throw new InvalidPersonException("Invalid person for Insurance request.");
+        }
         InsuranceRequest request = new InsuranceRequest(customer);
         addRequest(request);
         return request;

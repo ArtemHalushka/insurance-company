@@ -1,0 +1,24 @@
+00:24:50.386 [main] ERROR Main - Exception:
+exceptions.InvalidPriceException: Wrong price. Please use greater than 2000.0
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:37) ~[insurance-company/:?]
+	at Main.main(Main.java:46) [insurance-company/:?]
+00:40:31.912 [main] ERROR Main - Exception:
+exceptions.InvalidM2Exception: Wrong M2. Please use greater than 5
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:40) ~[insurance-company/:?]
+	at Main.main(Main.java:46) [insurance-company/:?]
+00:40:54.659 [main] INFO  Main - Exception:
+exceptions.InvalidM2Exception: Wrong M2. Please use greater than 5
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:40) ~[insurance-company/:?]
+	at Main.main(Main.java:46) [insurance-company/:?]
+00:41:03.846 [main] INFO  Main - Exception:
+exceptions.InvalidM2Exception: Wrong M2. Please use greater than 5
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:40) ~[insurance-company/:?]
+	at Main.main(Main.java:46) [insurance-company/:?]
+00:49:38.705 [main] ERROR Main - Exception:
+exceptions.InvalidM2Exception: Wrong M2. Please use greater than 5
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:40) ~[insurance-company/:?]
+	at Main.main(Main.java:43) [insurance-company/:?]
+00:49:46.015 [main] ERROR Main - Exception:
+exceptions.InvalidM2Exception: Wrong M2. Please use greater than 5
+	at company.InsuranceCompany.issueInsurance(InsuranceCompany.java:40) ~[insurance-company/:?]
+	at Main.main(Main.java:43) [insurance-company/:?]
