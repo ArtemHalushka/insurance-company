@@ -17,7 +17,8 @@ public abstract class Person {
     public Person(String name, Date birthDate, String address, String phoneNumber) throws StringLengthException {
         if (address.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
             throw new StringLengthException("Too long address");
-        } else if (name.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
+        } 
+        if (name.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
             throw new StringLengthException("Too long name");
         }
         this.name = name;
