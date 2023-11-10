@@ -1,5 +1,8 @@
 package people;
 
+import exceptions.IInsuranceObjectParameter;
+import exceptions.StringLengthException;
+
 import java.util.Objects;
 
 public abstract class Person {
@@ -10,7 +13,12 @@ public abstract class Person {
     private String phoneNumber;
     protected int personId = (int) (Math.random() * 10001);
 
-    public Person(String name, String birthDate, String address, String phoneNumber) {
+    public Person(String name, String birthDate, String address, String phoneNumber) throws StringLengthException {
+        if (address.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
+            throw new StringLengthException("Too long address");
+        } else if (name.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
+            throw new StringLengthException("Too long name");
+        }
         this.name = name;
         this.birthDate = birthDate;
         this.address = address;
