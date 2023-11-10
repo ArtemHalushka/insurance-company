@@ -1,6 +1,6 @@
 package exceptions;
 
-public class LengthStringException extends Exception {
+public class StringLenghtException extends Exception {
 
     public LengthStringException(String message) {
 
