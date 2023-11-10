@@ -3,17 +3,18 @@ package people;
 import exceptions.IInsuranceObjectParameter;
 import exceptions.StringLengthException;
 
+import java.util.Date;
 import java.util.Objects;
 
 public abstract class Person {
 
     private String name;
-    private String birthDate;
+    private Date birthDate;
     private String address;
     private String phoneNumber;
     protected int personId = (int) (Math.random() * 10001);
 
-    public Person(String name, String birthDate, String address, String phoneNumber) throws StringLengthException {
+    public Person(String name, Date birthDate, String address, String phoneNumber) throws StringLengthException {
         if (address.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
             throw new StringLengthException("Too long address");
         } else if (name.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
@@ -29,7 +30,7 @@ public abstract class Person {
         return name;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 

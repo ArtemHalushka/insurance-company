@@ -3,6 +3,7 @@ package insurances;
 import people.Customer;
 import people.Employee;
 
+import java.util.Date;
 import java.util.Objects;
 
 abstract public class Insurance {
@@ -10,11 +11,11 @@ abstract public class Insurance {
     private String insuranceName;
     private Employee issueEmployee;
     private Customer insuranceCustomer;
-    private String issueDate;
-    private String endDate;
+    private Date issueDate;
+    private Date endDate;
 
     public Insurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
-                     String issueDate, String endDate) {
+                     Date issueDate, Date endDate) {
         this.insuranceName = insuranceName;
         this.issueEmployee = issueEmployee;
         this.insuranceCustomer = insuranceCustomer;
@@ -34,11 +35,11 @@ abstract public class Insurance {
         return insuranceCustomer;
     }
 
-    public String getIssueDate() {
+    public Date getIssueDate() {
         return issueDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 

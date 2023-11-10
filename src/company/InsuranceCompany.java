@@ -6,6 +6,7 @@ import people.*;
 import exceptions.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
@@ -21,8 +22,8 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                    String endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
+    public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate,
+                                    Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
             if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < IInsuranceObjectParameter.INVALID_VEHICLE_PRICE) {
                 throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_VEHICLE_PRICE);
