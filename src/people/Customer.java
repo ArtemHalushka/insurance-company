@@ -1,12 +1,9 @@
 package people;
 
-import java.util.Date;
 import objects.Health;
 import objects.InsureObject;
 import objects.Vehicle;
 import objects.Home;
-
-import java.util.Date;
 
 public class Customer extends Person {
 

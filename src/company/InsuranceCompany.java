@@ -22,41 +22,33 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, String issueDate,
-                                    String endDate) throws InvalidPriceException, InvalidM2Exception, IllegalArgumentException{
+                                    String endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
-            try {
-                if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < IExceptionConstants.INVALID_VEHICLE_PRICE) {
-                    throw new InvalidPriceException("Wrong price. Please use greater than 500$");
-                }
-                VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(),
-                        issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
-                insuranceCount++;
-                return insurance;
-            } catch (InvalidPriceException e) {
-                System.out.println(e.getMessage());
+            if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < IInsuranceObjectParameter.INVALID_VEHICLE_PRICE) {
+                throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_VEHICLE_PRICE);
             }
+            VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(),
+                    issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
+            insuranceCount++;
+            return insurance;
         } else if (request.getCustomer().getInsureObject() instanceof Home) {
-            try {
-                if (((Home) request.getCustomer().getInsureObject()).getPrice() < IExceptionConstants.INVALID_HOME_PRICE) {
-                    throw new InvalidPriceException("Wrong price. Please use greater than 2000$");
+                if (((Home) request.getCustomer().getInsureObject()).getPrice() < IInsuranceObjectParameter.INVALID_HOME_PRICE) {
+                    throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_PRICE);
                 }
-                if (((Home) request.getCustomer().getInsureObject()).getM2() < IExceptionConstants.INVALID_HOME_M2) {
-                    throw new InvalidM2Exception("Wrong price. Please use greater than 2000$");
+                if (((Home) request.getCustomer().getInsureObject()).getM2() < IInsuranceObjectParameter.INVALID_HOME_M2) {
+                    throw new InvalidM2Exception("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_M2);
                 }
                 HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(),
                         issueDate, endDate, (Home) request.getCustomer().getInsureObject());
                 insuranceCount++;
                 return insurance;
-            } catch (InvalidPriceException | InvalidM2Exception e) {
-                System.out.println(e.getMessage());
-            }
         } else if (request.getCustomer().getInsureObject() instanceof Health) {
             HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(),
                     issueDate, endDate);
             insuranceCount++;
             return insurance;
         }
-        throw new IllegalArgumentException("Unsupported Insure Object");
+        throw new InvalidInsureObjectException("Unsupported Insure Object");
     }
 
     @Override
