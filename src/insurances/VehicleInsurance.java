@@ -17,10 +17,10 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
         finalPrice = PriceCalculator.calculateInsurancePrice(vehicleType);
-        if ((ILevel.HIGH_LEVEL).equals(vehicleType.insuranceObjectLevel())) {
+        if (ILevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice - (finalPrice / 10);
         }
-        if ((ILevel.LOW_LEVEL).equals(vehicleType.insuranceObjectLevel())) {
+        if (ILevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }

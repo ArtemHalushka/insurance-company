@@ -7,12 +7,14 @@ import exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     private String name;
-    private ArrayList<Employee> employees = new ArrayList<>();
-    private ArrayList<Customer> customers = new ArrayList<>();
+    private Map<String, Employee> employees = new HashMap<>();
+    private Map<String, Customer> customers = new HashMap<>();
     private ArrayList<Insurance> issuedInsurances = new ArrayList<>();
     private ArrayList<InsuranceRequest> requests = new ArrayList<>();
     private static int insuranceCount;
@@ -59,30 +61,30 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
+    public void addEmployee(String employeeName, Employee employee) {
+        employees.put(employeeName, employee);
     }
 
     @Override
-    public void removeEmployee(Employee employee) {
-        employees.remove(employee);
+    public void removeEmployee(String employeeName) {
+        employees.remove(employeeName);
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public Map<String, Employee> getEmployees() {
         return employees;
     }
 
     @Override
-    public void addCustomer(Customer customer) {
-        customers.add(customer);
+    public void addCustomer(String customerName, Customer customer) {
+        customers.put(customerName, customer);
     }
 
     @Override
-    public void removeCustomer(Customer customer) {
-        customers.remove(customer);
+    public void removeCustomer(String customerName) {
+        customers.remove(customerName);
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public Map<String, Customer> getCustomers() {
         return customers;
     }
 
@@ -114,3 +116,4 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         return requests;
     }
 }
+
