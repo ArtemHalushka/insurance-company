@@ -45,8 +45,7 @@ public class Health extends InsureObject {
 
     @Override
     public String toString() {
-        String healthDiseasesString = Arrays.toString(healthDiseases.toArray());
-        String medicationsString = Arrays.toString(medications.toArray());
-        return "Health: " + "id (" + objectId + ") " + healthDiseasesString + " " + " smoker " + "(" + smoker + ") " + medicationsString;
+
+        return "Health: id (" + objectId + ") " + String.join(" ", healthDiseases) + " smoker (" + smoker + ") " + String.join(" ", medications);
     }
 }

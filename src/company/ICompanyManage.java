@@ -15,5 +15,5 @@ public interface ICompanyManage {
     void addInsurance(Insurance insurance);
     void removeInsurance(Insurance insurance);
     void addRequest(InsuranceRequest request);
-    void removeRequest(InsuranceRequest request);
+    InsuranceRequest removeRequest();
 }

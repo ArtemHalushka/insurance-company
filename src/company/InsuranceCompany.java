@@ -1,5 +1,6 @@
 package company;
 
+import com.sun.net.httpserver.Request;
 import insurances.*;
 import objects.*;
 import people.*;
@@ -106,8 +107,8 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public void removeRequest(InsuranceRequest request) {
-        requests.poll();
+    public InsuranceRequest removeRequest() {
+        return requests.poll();
     }
 
     public Queue<InsuranceRequest> getRequests() {
