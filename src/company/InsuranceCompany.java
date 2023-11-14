@@ -5,18 +5,16 @@ import objects.*;
 import people.*;
 import exceptions.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import javax.swing.*;
+import java.util.*;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     private String name;
-    private Map<String, Employee> employees = new HashMap<>();
-    private Map<String, Customer> customers = new HashMap<>();
+    private LinkedList<Employee> employees = new LinkedList<>();
+    private LinkedList<Customer> customers = new LinkedList<>();
     private ArrayList<Insurance> issuedInsurances = new ArrayList<>();
-    private ArrayList<InsuranceRequest> requests = new ArrayList<>();
+    private Queue<InsuranceRequest> requests = new ArrayDeque<>();
     private static int insuranceCount;
 
     public InsuranceCompany(String name) {
@@ -42,7 +40,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
             HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Home) request.getCustomer().getInsureObject());
             insuranceCount++;
             return insurance;
-        } else if (request.getCustomer().getInsureObject() instanceof Health) {
+        } else if (request.getCustomer().getHealth() instanceof Health) {
             HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate);
             insuranceCount++;
             return insurance;
@@ -61,30 +59,30 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public void addEmployee(String employeeName, Employee employee) {
-        employees.put(employeeName, employee);
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
     }
 
     @Override
-    public void removeEmployee(String employeeName) {
-        employees.remove(employeeName);
+    public void removeEmployee(Employee employee) {
+        employees.remove(employee);
     }
 
-    public Map<String, Employee> getEmployees() {
+    public LinkedList<Employee> getEmployees() {
         return employees;
     }
 
     @Override
-    public void addCustomer(String customerName, Customer customer) {
-        customers.put(customerName, customer);
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
     }
 
     @Override
-    public void removeCustomer(String customerName) {
-        customers.remove(customerName);
+    public void removeCustomer(Customer customer) {
+        customers.remove(customer);
     }
 
-    public Map<String, Customer> getCustomers() {
+    public LinkedList<Customer> getCustomers() {
         return customers;
     }
 
@@ -104,15 +102,15 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     @Override
     public void addRequest(InsuranceRequest request) {
-        requests.add(request);
+        requests.offer(request);
     }
 
     @Override
-    public void removeInsurance(InsuranceRequest request) {
-        requests.remove(request);
+    public void removeRequest(InsuranceRequest request) {
+        requests.poll();
     }
 
-    public ArrayList<InsuranceRequest> getRequests() {
+    public Queue<InsuranceRequest> getRequests() {
         return requests;
     }
 }
