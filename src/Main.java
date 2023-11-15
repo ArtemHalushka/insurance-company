@@ -30,9 +30,9 @@ public class Main {
             insuranceCompany.addEmployee(sam);
             Customer michael = new Customer("Michael Flint", dateFormat.parse("11-12-2001"), "United states",
                     "8839021", michaelIsSmoker);
-            michael.getHealth().addHealthDisease("Diabetes");
-            michael.getHealth().addHealthDisease("High blood pressure");
-            michael.getHealth().addMedications("Mezim");
+            michael.addHealthDisease("Diabetes");
+            michael.addHealthDisease("High blood pressure");
+            michael.addMedication("Mezim");
             InsuranceRequest michaelRequest = insuranceCompany.requestInsurance(michael);
             insuranceCompany.addCustomer(michael);
             Customer lena = new Customer("Lena Lorens", dateFormat.parse("22-06-2000"), "United States", "9901243", "5 Series", 15000, "Gas", 2007);
@@ -54,7 +54,7 @@ public class Main {
             insuranceCompany.addInsuranceList("VehicleInsurances", vehicleInsuranceList);
             insuranceCompany.addInsuranceList("HomeInsurances", homeInsuranceList);
             insuranceCompany.addInsuranceList("HealthInsurances", healthInsuranceList);
-            Printer.print(insuranceCompany.getCustomers());
+            LOGGER.info(insuranceCompany.getCustomersList());
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
                  ParseException | InvalidPersonException e) {
             LOGGER.error("Exception:", e);

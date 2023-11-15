@@ -17,5 +17,4 @@ public interface ICompanyManage {
     void addInsuranceList(String key, List<Insurance> insurances);
     void removeInsuranceList(String key);
     void addRequest(InsuranceRequest request);
-    InsuranceRequest removeRequest();
 }

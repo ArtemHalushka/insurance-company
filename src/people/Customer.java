@@ -33,6 +33,22 @@ public class Customer extends Person {
     }
     public Health getHealth() { return health; }
 
+    public void addHealthDisease(String disease) {
+        health.addHealthDisease(disease);
+    }
+
+    public void removeHealthDisease(String disease) {
+        health.removeHealthDisease(disease);
+    }
+
+    public void addMedication(String medicine) {
+        health.addMedications(medicine);
+    }
+
+    public void removeMedication(String medicine) {
+        health.removeMedications(medicine);
+    }
+
     @Override
     public String toString() {
         return "Person: " + "id (" + personId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " +
