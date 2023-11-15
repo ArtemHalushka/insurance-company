@@ -1,6 +1,5 @@
 package objects;
 
-import java.util.Arrays;
 import java.util.HashSet;
 
 public class Health extends InsureObject {

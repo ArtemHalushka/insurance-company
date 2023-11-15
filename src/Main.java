@@ -8,6 +8,8 @@ import org.apache.logging.log4j.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -43,9 +45,15 @@ public class Main {
             Insurance michaelInsurance = insuranceCompany.issueInsurance(michaelRequest, sam, "health", dateFormat.parse("09-01-2023"), dateFormat.parse("09-01-2025"));
             Insurance lenaVehicleInsurance = insuranceCompany.issueInsurance(lenaRequest, jim, "vehicle", dateFormat.parse("09-01-2023"), dateFormat.parse("09-01-2025"));
             Insurance jinaHomeInsurance = insuranceCompany.issueInsurance(jinaRequest, jim, "home", dateFormat.parse("09-01-2023"), dateFormat.parse("09-01-2025"));
-            insuranceCompany.addInsurance(lenaVehicleInsurance);
-            insuranceCompany.addInsurance(michaelInsurance);
-            insuranceCompany.addInsurance(jinaHomeInsurance);
+            List<Insurance> vehicleInsuranceList = new ArrayList<>();
+            vehicleInsuranceList.add(lenaVehicleInsurance);
+            List<Insurance> healthInsuranceList = new ArrayList<>();
+            healthInsuranceList.add(michaelInsurance);
+            List<Insurance> homeInsuranceList = new ArrayList<>();
+            homeInsuranceList.add(jinaHomeInsurance);
+            insuranceCompany.addInsuranceList("VehicleInsurances", vehicleInsuranceList);
+            insuranceCompany.addInsuranceList("HomeInsurances", homeInsuranceList);
+            insuranceCompany.addInsuranceList("HealthInsurances", healthInsuranceList);
             Printer.print(insuranceCompany.getCustomers());
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
                  ParseException | InvalidPersonException e) {

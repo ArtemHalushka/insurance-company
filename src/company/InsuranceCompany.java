@@ -1,12 +1,10 @@
 package company;
 
-import com.sun.net.httpserver.Request;
 import insurances.*;
 import objects.*;
 import people.*;
 import exceptions.*;
 
-import javax.swing.*;
 import java.util.*;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
@@ -14,7 +12,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     private String name;
     private LinkedList<Employee> employees = new LinkedList<>();
     private LinkedList<Customer> customers = new LinkedList<>();
-    private ArrayList<Insurance> issuedInsurances = new ArrayList<>();
+    private Map<String, List<Insurance>> issuedInsurancesMap = new HashMap<>();
     private Queue<InsuranceRequest> requests = new ArrayDeque<>();
     private static int insuranceCount;
 
@@ -88,17 +86,17 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     }
 
     @Override
-    public void addInsurance(Insurance insurance) {
-        issuedInsurances.add(insurance);
+    public void addInsuranceList(String key, List<Insurance> insurances) {
+        issuedInsurancesMap.put(key, insurances);
     }
 
     @Override
-    public void removeInsurance(Insurance insurance) {
-        issuedInsurances.remove(insurance);
+    public void removeInsuranceList(String key) {
+        issuedInsurancesMap.remove(key);
     }
 
-    public ArrayList<Insurance> getIssuedInsurances() {
-        return issuedInsurances;
+    public Map<String, List<Insurance>> getIssuedInsurances() {
+        return issuedInsurancesMap;
     }
 
     @Override

@@ -2,7 +2,6 @@ package insurances;
 
 import people.Customer;
 import people.Employee;
-
 import java.util.Date;
 import java.util.Objects;
 

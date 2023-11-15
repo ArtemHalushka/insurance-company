@@ -5,7 +5,6 @@ import objects.ILevel;
 import people.Employee;
 import people.Customer;
 import objects.Vehicle;
-
 import java.util.Date;
 
 public class VehicleInsurance extends Insurance {

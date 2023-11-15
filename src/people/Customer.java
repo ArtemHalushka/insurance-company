@@ -7,7 +7,6 @@ import objects.Vehicle;
 import objects.Home;
 
 import java.util.Date;
-import java.util.HashSet;
 
 public class Customer extends Person {
 
