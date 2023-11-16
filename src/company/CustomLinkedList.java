@@ -1,33 +1,31 @@
 package company;
 
-import people.Person;
-
-public class PersonLinkedList {
+public class CustomLinkedList<T> {
 
     private Node head;
 
-    public void insert(Person person) {
-        Node new_node = new Node(person);
-        new_node.next = null;
+    public void insert(T person) {
+        Node<T> newNode = new Node<>(person);
+        newNode.next = null;
 
         if (head == null) {
-            head = new_node;
+            head = newNode;
         } else {
-            Node last = head;
+            Node<T> last = head;
             while (last.next != null) {
                 last = last.next;
             }
-            last.next = new_node;
+            last.next = newNode;
         }
     }
 
-    public void remove(Person person) {
+    public void remove(T person) {
         if (head.value.equals(person)) {
             head = head.next;
         }
 
-        Node current = head;
-        Node prev = null;
+        Node<T> current = head;
+        Node<T> prev = null;
 
         while (current != null && !current.value.equals(person)) {
             prev = current;
@@ -39,7 +37,7 @@ public class PersonLinkedList {
 
     public String printList() {
         StringBuilder listString = new StringBuilder();
-        Node currNode = head;
+        Node<T> currNode = head;
         while (currNode != null) {
             listString.append(currNode.value).append(" ");
             currNode = currNode.next;

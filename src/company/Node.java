@@ -1,13 +1,11 @@
 package company;
 
-import people.Person;
-
-public class Node {
+public class Node<T> {
 
     Node next;
-    Person value;
+    T value;
 
-    public Node(Person valueNode) {
+    public Node(T valueNode) {
         value = valueNode;
         next = null;
     }

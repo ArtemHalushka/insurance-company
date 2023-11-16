@@ -11,7 +11,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     private String name;
     private LinkedList<Employee> employees = new LinkedList<>();
-    private PersonLinkedList customers = new PersonLinkedList();
+    private CustomLinkedList<Customer> customers = new CustomLinkedList<>();
     private Map<String, List<Insurance>> issuedInsurancesMap = new HashMap<>();
     private Queue<InsuranceRequest> requests = new ArrayDeque<>();
     private static int insuranceCount;
@@ -81,7 +81,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         customers.remove(customer);
     }
 
-    public PersonLinkedList getCustomers() {
+    public CustomLinkedList<Customer> getCustomers() {
         return customers;
     }
 
