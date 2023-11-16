@@ -12,7 +12,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.solvd.insurancecompany.Main</mainClass>
+              <mainClass>${Main.class}</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -29,7 +29,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.solvd.insurancecompany.Main</mainClass>
+                  <mainClass>${Main.class}</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -39,6 +39,7 @@
     </plugins>
   </build>
   <properties>
+    <Main.class>com.solvd.insurancecompany.Main</Main.class>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.source>21</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
