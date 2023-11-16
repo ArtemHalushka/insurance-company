@@ -19,10 +19,10 @@ public class PriceCalculator {
         } else if (insureObject instanceof Home) {
             return ((HOME_PRICE_PERCENT / 100) * ((Home) insureObject).getPrice() * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT);
         } else if (insureObject instanceof Health) {
-            if ((((Health) insureObject).getHealthDiseases().length) == 0) {
+            if ((((Health) insureObject).getHealthDiseases().size()) == 0) {
                 return MINIMAL_HEALTH_PRICE;
             }
-            return ((HEALTH_PRICE_PERCENT / 100) * ((((Health) insureObject).getHealthDiseases().length) * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
+            return ((HEALTH_PRICE_PERCENT / 100) * ((((Health) insureObject).getHealthDiseases().size()) * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
         }
         return 0;
     }

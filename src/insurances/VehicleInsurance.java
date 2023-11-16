@@ -5,7 +5,6 @@ import objects.ILevel;
 import people.Employee;
 import people.Customer;
 import objects.Vehicle;
-
 import java.util.Date;
 
 public class VehicleInsurance extends Insurance {
@@ -17,10 +16,10 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
         finalPrice = PriceCalculator.calculateInsurancePrice(vehicleType);
-        if ((ILevel.HIGH_LEVEL).equals(vehicleType.insuranceObjectLevel())) {
+        if (ILevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice - (finalPrice / 10);
         }
-        if ((ILevel.LOW_LEVEL).equals(vehicleType.insuranceObjectLevel())) {
+        if (ILevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }

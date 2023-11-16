@@ -17,10 +17,10 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
         finalPrice = PriceCalculator.calculateInsurancePrice(homeType);
-        if ((ILevel.HIGH_LEVEL).equals(homeType.insuranceObjectLevel())) {
+        if (ILevel.HIGH_LEVEL.equals(homeType.insuranceObjectLevel())) {
             finalPrice = finalPrice - (finalPrice / 10);
         }
-        if ((ILevel.LOW_LEVEL).equals(homeType.insuranceObjectLevel())) {
+        if (ILevel.LOW_LEVEL.equals(homeType.insuranceObjectLevel())) {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }
