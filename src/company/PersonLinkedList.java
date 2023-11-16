@@ -1,28 +1,19 @@
 package company;
 
-public class PersonLinkedList<T> {
+import people.Person;
+
+public class PersonLinkedList {
 
     private Node head;
 
-    public static class Node<T> {
-
-        Node<T> next;
-        T value;
-
-        public Node(T valueNode) {
-            value = valueNode;
-            next = null;
-        }
-    }
-
-    public void insert(T person) {
-        Node<T> new_node = new Node<>(person);
+    public void insert(Person person) {
+        Node new_node = new Node(person);
         new_node.next = null;
 
         if (head == null) {
             head = new_node;
         } else {
-            Node<T> last = head;
+            Node last = head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -30,13 +21,13 @@ public class PersonLinkedList<T> {
         }
     }
 
-    public void remove(T person) {
-        if(head.value.equals(person)) {
+    public void remove(Person person) {
+        if (head.value.equals(person)) {
             head = head.next;
         }
 
-        Node<T> current = head;
-        Node<T> prev = null;
+        Node current = head;
+        Node prev = null;
 
         while (current != null && !current.value.equals(person)) {
             prev = current;
@@ -48,7 +39,7 @@ public class PersonLinkedList<T> {
 
     public String printList() {
         StringBuilder listString = new StringBuilder();
-        Node<T> currNode = head;
+        Node currNode = head;
         while (currNode != null) {
             listString.append(currNode.value).append(" ");
             currNode = currNode.next;
