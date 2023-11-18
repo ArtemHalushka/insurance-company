@@ -3,6 +3,7 @@ package com.solvd.insurancecompany.company;
 public class CustomLinkedList<T> {
 
     private Node head;
+    private static int sizeCounter;
 
     public void insert(T person) {
         Node<T> newNode = new Node<>(person);
@@ -17,6 +18,7 @@ public class CustomLinkedList<T> {
             }
             last.next = newNode;
         }
+        incrementSize();
     }
 
     public void remove(T person) {
@@ -33,6 +35,36 @@ public class CustomLinkedList<T> {
         }
 
         prev.next = current.next;
+        decrementSize();
+    }
+
+    public void incrementSize() {
+        sizeCounter++;
+    }
+
+    public void decrementSize() {
+        sizeCounter--;
+    }
+
+    public int size() {
+        return sizeCounter;
+    }
+
+    public T getValueByIndex(int index) {
+        if (index < 0) {
+            return null;
+        }
+        Node<T> current = head;
+        int currentIndex = 0;
+
+        while (current != null) {
+            if (currentIndex == index) {
+                return current.value;
+            }
+            current = current.next;
+            currentIndex++;
+        }
+        return null;
     }
 
     public String printList() {
