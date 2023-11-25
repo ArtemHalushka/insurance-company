@@ -15,7 +15,6 @@ public class Vehicle extends InsureObject implements ILevel {
         this.price = price;
         this.fuel = fuel;
         this.year = year;
-        this.objectId = objectId;
     }
 
     @Override
