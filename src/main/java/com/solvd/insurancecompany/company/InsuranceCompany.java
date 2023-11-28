@@ -19,6 +19,8 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         this.name = name;
     }
 
+    /// todo: add into insurance array into inside issueInsurance
+
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {

@@ -13,7 +13,6 @@ public class Home extends InsureObject implements ILevel {
         this.type = type;
         this.price = price;
         this.m2 = m2;
-        this.objectId = objectId;
     }
 
     @Override
