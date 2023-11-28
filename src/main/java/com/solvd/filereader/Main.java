@@ -18,12 +18,11 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-
     public static void main(String[] args) {
         try {
-            Set<String> uniqueWords = new HashSet<>();
             ClassLoader classLoader = Main.class.getClassLoader();
             File file = new File(classLoader.getResource("input.txt").getFile());
+            Set<String> uniqueWords = new HashSet<>();
             String fileText = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
             LOGGER.info(fileText);
             String[] textArray = StringUtils.split(fileText);
