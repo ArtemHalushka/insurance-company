@@ -12,10 +12,6 @@ import java.util.Set;
 
 public class Main {
 
-    static {
-        System.setProperty("log4j2.configurationFile", "log4j2.xml");
-    }
-
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -23,7 +19,6 @@ public class Main {
             File file = new File(Main.class.getClassLoader().getResource("input.txt").getFile());
             Set<String> uniqueWords = new HashSet<>();
             String fileText = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-            LOGGER.info(fileText);
             String[] textArray = StringUtils.split(fileText);
             for (String word : textArray) {
                 String cleanWord = StringUtils.strip(word, ".,;:\"'()[]{}?!-").toLowerCase();
