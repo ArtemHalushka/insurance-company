@@ -20,8 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            ClassLoader classLoader = Main.class.getClassLoader();
-            File file = new File(classLoader.getResource("input.txt").getFile());
+            File file = new File(Main.class.getClassLoader().getResource("input.txt").getFile());
             Set<String> uniqueWords = new HashSet<>();
             String fileText = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
             LOGGER.info(fileText);
