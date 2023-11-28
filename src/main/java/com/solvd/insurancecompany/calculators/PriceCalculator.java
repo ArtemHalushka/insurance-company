@@ -7,22 +7,16 @@ import com.solvd.insurancecompany.objects.Vehicle;
 
 public class PriceCalculator {
 
-    private final static double INSURANCE_COMPANY_COEFFICIENT = 10;
-    private final static double HOME_PRICE_PERCENT = 0.1;
-    private final static double VEHICLE_PRICE_PERCENT = 0.3;
-    private final static double HEALTH_PRICE_PERCENT = 2;
-    private final static double MINIMAL_HEALTH_PRICE = 10;
-
     public static double calculateInsurancePrice(InsureObject insureObject) {
         if (insureObject instanceof Vehicle) {
-            return ((VEHICLE_PRICE_PERCENT / 100) * ((Vehicle) insureObject).getPrice() * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT);
+            return ((CalculatorValues.VEHICLE_PRICE_PERCENT.getValue() / 100) * ((Vehicle) insureObject).getPrice() * CalculatorValues.INSURANCE_COMPANY_COEFFICIENT.getValue());
         } else if (insureObject instanceof Home) {
-            return ((HOME_PRICE_PERCENT / 100) * ((Home) insureObject).getPrice() * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT);
+            return ((CalculatorValues.HOME_PRICE_PERCENT.getValue() / 100) * ((Home) insureObject).getPrice() * CalculatorValues.INSURANCE_COMPANY_COEFFICIENT.getValue());
         } else if (insureObject instanceof Health) {
             if ((((Health) insureObject).getHealthDiseases().size()) == 0) {
-                return MINIMAL_HEALTH_PRICE;
+                return CalculatorValues.MINIMAL_HEALTH_PRICE.getValue();
             }
-            return ((HEALTH_PRICE_PERCENT / 100) * ((((Health) insureObject).getHealthDiseases().size()) * 300)) * PriceCalculator.INSURANCE_COMPANY_COEFFICIENT;
+            return ((CalculatorValues.HEALTH_PRICE_PERCENT.getValue() / 100) * ((((Health) insureObject).getHealthDiseases().size()) * 300)) * CalculatorValues.INSURANCE_COMPANY_COEFFICIENT.getValue();
         }
         return 0;
     }

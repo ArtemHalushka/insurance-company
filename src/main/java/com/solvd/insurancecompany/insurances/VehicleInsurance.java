@@ -1,7 +1,7 @@
 package com.solvd.insurancecompany.insurances;
 
 import com.solvd.insurancecompany.calculators.PriceCalculator;
-import com.solvd.insurancecompany.objects.ILevel;
+import com.solvd.insurancecompany.objects.Level;
 import com.solvd.insurancecompany.people.Employee;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.objects.Vehicle;
@@ -16,10 +16,10 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
         finalPrice = PriceCalculator.calculateInsurancePrice(vehicleType);
-        if (ILevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+        if (Level.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice - (finalPrice / 10);
         }
-        if (ILevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+        if (Level.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }

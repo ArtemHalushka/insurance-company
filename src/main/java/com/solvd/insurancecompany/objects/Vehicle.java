@@ -2,7 +2,7 @@ package com.solvd.insurancecompany.objects;
 
 import java.util.Objects;
 
-public class Vehicle extends InsureObject implements ILevel {
+public class Vehicle extends InsureObject {
 
     private final String type;
     private final double price;
@@ -21,14 +21,13 @@ public class Vehicle extends InsureObject implements ILevel {
         return price;
     }
 
-    @Override
     public String insuranceObjectLevel() {
-        if (price > VEHICLE_LEVEL_PRICE && year > VEHICLE_LEVEL_YEAR) {
-            return HIGH_LEVEL;
-        } else if (price > VEHICLE_LEVEL_PRICE || year > VEHICLE_LEVEL_YEAR) {
-            return MEDIUM_LEVEL;
+        if (price > Price.VEHICLE_PRICE.getValue() && year > Year.VEHICLE_LEVEL_YEAR.getValue()) {
+            return Level.HIGH_LEVEL.getDescription();
+        } else if (price > Price.VEHICLE_PRICE.getValue() || year > Year.VEHICLE_LEVEL_YEAR.getValue()) {
+            return Level.MEDIUM_LEVEL.getDescription();
         } else {
-            return LOW_LEVEL;
+            return Level.LOW_LEVEL.getDescription();
         }
     }
 

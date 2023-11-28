@@ -1,14 +1,13 @@
 package com.solvd.insurancecompany.objects;
 
 import java.util.Objects;
-
-public class Home extends InsureObject implements ILevel {
+public class Home extends InsureObject {
 
     private final String type;
     private final double price;
-    private final int m2;
+    private final double m2;
 
-    public Home(String type, double price, int m2) {
+    public Home(String type, double price, double m2) {
         super();
         this.type = type;
         this.price = price;
@@ -19,8 +18,18 @@ public class Home extends InsureObject implements ILevel {
         return price;
     }
 
-    public int getM2() {
+    public double getM2() {
         return m2;
+    }
+
+    public String insuranceObjectLevel() {
+        if (price > Price.HOME_PRICE.getValue() && m2 > Area.HOME_M2_AREA.getValue()) {
+            return Level.HIGH_LEVEL.getDescription();
+        }else if (price > Price.HOME_PRICE.getValue() || m2 > Area.HOME_M2_AREA.getValue()) {
+            return Level.MEDIUM_LEVEL.getDescription();
+        } else {
+            return Level.LOW_LEVEL.getDescription();
+        }
     }
 
     @Override
@@ -38,17 +47,6 @@ public class Home extends InsureObject implements ILevel {
         }
         Home self = (Home) object;
         return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
-    }
-
-    @Override
-    public String insuranceObjectLevel() {
-        if (price > HOME_LEVEL_PRICE && m2 > HOME_LEVEL_M2) {
-            return HIGH_LEVEL;
-        }else if (price > HOME_LEVEL_PRICE || m2 > HOME_LEVEL_M2) {
-            return MEDIUM_LEVEL;
-        } else {
-            return LOW_LEVEL;
-        }
     }
 
     @Override
