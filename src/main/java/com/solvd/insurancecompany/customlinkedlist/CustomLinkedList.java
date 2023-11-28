@@ -1,4 +1,4 @@
-package com.solvd.insurancecompany.company;
+package com.solvd.insurancecompany.customlinkedlist;
 
 public class CustomLinkedList<T> {
 

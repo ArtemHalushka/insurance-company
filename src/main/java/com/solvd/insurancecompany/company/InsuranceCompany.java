@@ -1,5 +1,6 @@
 package com.solvd.insurancecompany.company;
 
+import com.solvd.insurancecompany.customlinkedlist.CustomLinkedList;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.people.*;
 import com.solvd.insurancecompany.exceptions.*;
@@ -18,8 +19,6 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     public InsuranceCompany(String name) {
         this.name = name;
     }
-
-    /// todo: add into insurance array into inside issueInsurance
 
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
@@ -58,6 +57,26 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         return request;
     }
 
+    public static int getInsuranceCount() {
+        return insuranceCount;
+    }
+
+    public CustomLinkedList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public String getCustomersList() {
+        return customers.printList();
+    }
+
+    public Map<String, List<Insurance>> getIssuedInsurances() {
+        return issuedInsurancesMap;
+    }
+
+    public Queue<InsuranceRequest> getRequests() {
+        return requests;
+    }
+
     @Override
     public void addEmployee(Employee employee) {
         employees.add(employee);
@@ -82,14 +101,6 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         customers.remove(customer);
     }
 
-    public CustomLinkedList<Customer> getCustomers() {
-        return customers;
-    }
-
-    public String getCustomersList() {
-        return customers.printList();
-    }
-
     @Override
     public void addInsuranceList(String key, List<Insurance> insurances) {
         issuedInsurancesMap.put(key, insurances);
@@ -100,17 +111,9 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         issuedInsurancesMap.remove(key);
     }
 
-    public Map<String, List<Insurance>> getIssuedInsurances() {
-        return issuedInsurancesMap;
-    }
-
     @Override
     public void addRequest(InsuranceRequest request) {
         requests.offer(request);
-    }
-
-    public Queue<InsuranceRequest> getRequests() {
-        return requests;
     }
 }
 

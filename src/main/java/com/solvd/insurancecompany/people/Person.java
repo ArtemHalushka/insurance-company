@@ -47,8 +47,7 @@ public abstract class Person {
     public boolean equals(Object object) {
         if (this == object) {
             return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
+        } else if (object == null || getClass() != object.getClass()) {
             return false;
         }
         Person self = (Person) object;

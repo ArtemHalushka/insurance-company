@@ -17,12 +17,15 @@ public class Vehicle extends InsureObject implements ILevel {
         this.year = year;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public String insuranceObjectLevel() {
         if (price > VEHICLE_LEVEL_PRICE && year > VEHICLE_LEVEL_YEAR) {
             return HIGH_LEVEL;
-        }
-        if (price > VEHICLE_LEVEL_PRICE || year > VEHICLE_LEVEL_YEAR) {
+        } else if (price > VEHICLE_LEVEL_PRICE || year > VEHICLE_LEVEL_YEAR) {
             return MEDIUM_LEVEL;
         } else {
             return LOW_LEVEL;
@@ -32,10 +35,6 @@ public class Vehicle extends InsureObject implements ILevel {
     @Override
     public String toString() {
         return "Vehicle: " + "id (" + objectId + ") " + type + " " + price + " " + fuel + " " + year;
-    }
-
-    public double getPrice() {
-        return price;
     }
 
     @Override
