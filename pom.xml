@@ -9,13 +9,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <groupId>com.solvd</groupId>
     <artifactId>insurance-company</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>filereader</module>
-        <module>insurancecompany</module>
-    </modules>
-
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

@@ -4,8 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.*;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +12,11 @@ import java.util.Set;
 public class Main {
 
     static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
+        System.setProperty("log4j2.configurationFile", "log4j2.xml");
     }
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
 
     public static void main(String[] args) {
         try {
