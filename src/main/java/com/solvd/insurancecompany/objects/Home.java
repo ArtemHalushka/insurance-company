@@ -3,12 +3,11 @@ package com.solvd.insurancecompany.objects;
 import java.util.Objects;
 public class Home extends InsureObject {
 
-    private final String type;
     private final double price;
     private final double m2;
 
     public Home(String type, double price, double m2) {
-        super();
+        super(type);
         this.type = type;
         this.price = price;
         this.m2 = m2;
@@ -31,6 +30,9 @@ public class Home extends InsureObject {
             return Level.LOW_LEVEL.getDescription();
         }
     }
+
+    @Override
+    public String getType() { return type; }
 
     @Override
     public String toString() {

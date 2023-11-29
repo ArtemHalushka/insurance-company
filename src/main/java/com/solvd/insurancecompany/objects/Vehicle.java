@@ -4,14 +4,12 @@ import java.util.Objects;
 
 public class Vehicle extends InsureObject {
 
-    private final String type;
     private final double price;
     private final String fuel;
     private final int year;
 
     public Vehicle(String type, double price, String fuel, int year) {
-        super();
-        this.type = type;
+        super(type);
         this.price = price;
         this.fuel = fuel;
         this.year = year;
@@ -30,6 +28,9 @@ public class Vehicle extends InsureObject {
             return Level.LOW_LEVEL.getDescription();
         }
     }
+
+    @Override
+    public String getType() { return type; }
 
     @Override
     public String toString() {

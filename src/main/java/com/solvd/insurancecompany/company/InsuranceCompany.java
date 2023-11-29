@@ -26,6 +26,52 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         this.name = name;
     }
 
+    public static int getInsuranceCount() {
+        return insuranceCount;
+    }
+
+    public CustomLinkedList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public String getCustomersList() {
+        return customers.printList();
+    }
+
+    public Map<String, List<Insurance>> getIssuedInsurances() {
+        return issuedInsurancesMap;
+    }
+
+    public Queue<InsuranceRequest> getRequests() {
+        return requests;
+    }
+
+    public void printEmployees() {
+        employees.forEach(employee -> LOGGER.info(employee.toString()));
+    }
+
+    public void printCustomers() {
+        customers.forEach(customer -> LOGGER.info(customer.toString()));
+    }
+
+    public void findVehicleObject(String insureObjectName) {
+        customers.forEach(customer -> {
+            if (insureObjectName.equals(customer.getInsureObject().getType())) {
+                LOGGER.info(customer.getInsureObject().toString());
+            }
+        });
+    }
+
+    public void findMinimalPriceForInsurance() {
+        issuedInsurancesMap.forEach((key, insurances) -> {
+            double minimalPrice = insurances.stream()
+                    .mapToDouble(Insurance :: getFinalPrice)
+                    .min()
+                    .orElse(0.0);
+            LOGGER.info("Minimal price of " + key + " is: " + minimalPrice);
+        });
+    }
+
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
@@ -61,34 +107,6 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         InsuranceRequest request = new InsuranceRequest(customer);
         addRequest(request);
         return request;
-    }
-
-    public static int getInsuranceCount() {
-        return insuranceCount;
-    }
-
-    public CustomLinkedList<Customer> getCustomers() {
-        return customers;
-    }
-
-    public String getCustomersList() {
-        return customers.printList();
-    }
-
-    public Map<String, List<Insurance>> getIssuedInsurances() {
-        return issuedInsurancesMap;
-    }
-
-    public Queue<InsuranceRequest> getRequests() {
-        return requests;
-    }
-
-    public void printEmployees() {
-        employees.forEach(employee -> LOGGER.info(employee.toString()));
-    }
-
-    public void printCustomers() {
-        customers.forEach(customer -> LOGGER.info(customer.toString()));
     }
 
     @Override

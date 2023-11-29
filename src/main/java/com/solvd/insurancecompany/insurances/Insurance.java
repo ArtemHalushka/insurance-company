@@ -27,6 +27,8 @@ abstract public class Insurance {
         return insuranceName;
     }
 
+    public double getFinalPrice() { return finalPrice; }
+
     public Employee getIssueEmployee() {
         return issueEmployee;
     }
