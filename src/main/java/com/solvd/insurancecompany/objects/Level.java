@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.objects;
 
-public enum Level {
+public enum LuxuryLevel {
 
     HIGH_LEVEL("High Level"),
     MEDIUM_LEVEL("Medium Level"),
