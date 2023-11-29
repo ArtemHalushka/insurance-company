@@ -1,6 +1,7 @@
 package com.solvd.insurancecompany.insurances;
 
-import com.solvd.insurancecompany.calculators.PriceCalculator;
+import com.solvd.insurancecompany.calculators.CalculatorValue;
+import com.solvd.insurancecompany.calculators.InsurancePriceCalculator;
 import com.solvd.insurancecompany.objects.LuxuryLevel;
 import com.solvd.insurancecompany.people.Employee;
 import com.solvd.insurancecompany.people.Customer;
@@ -15,13 +16,16 @@ public class VehicleInsurance extends Insurance {
                             Date issueDate, Date endDate, Vehicle vehicleType) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
-        finalPrice = PriceCalculator.calculateInsurancePrice(vehicleType);
-        if (LuxuryLevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
-            finalPrice = finalPrice - (finalPrice / 10);
-        }
-        if (LuxuryLevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
-            finalPrice = finalPrice + (finalPrice / 10);
-        }
+        InsurancePriceCalculator<Vehicle> priceCalculator = insureObject -> {
+            finalPrice = ((CalculatorValue.VEHICLE_PRICE_PERCENT.getValue() / 100) * vehicleType.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue());
+            if (LuxuryLevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+                finalPrice -= finalPrice / 10;
+            }
+            if (LuxuryLevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+                finalPrice += finalPrice / 10;
+            }
+            return finalPrice;
+        };
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Health extends InsureObject {
 
-    private HashSet<String> healthDiseases  = new HashSet<>();
+    private static HashSet<String> healthDiseases  = new HashSet<>();
     private boolean smoker;
     private HashSet<String> medications = new HashSet<>();
 
@@ -13,7 +13,7 @@ public class Health extends InsureObject {
         this.smoker = smoker;
     }
 
-    public HashSet<String> getHealthDiseases() {
+    public static HashSet<String> getHealthDiseases() {
         return healthDiseases;
     }
 
