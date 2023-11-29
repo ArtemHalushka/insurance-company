@@ -32,7 +32,6 @@ public class CustomLinkedList<T> {
         }
     }
 
-
     public void remove(T person) {
         if (head.value.equals(person)) {
             head = head.next;
