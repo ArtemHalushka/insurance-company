@@ -23,18 +23,18 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
         if (request.getCustomer().getInsureObject() instanceof Vehicle) {
-            if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < IInsuranceObjectParameter.INVALID_VEHICLE_PRICE) {
-                throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_VEHICLE_PRICE);
+            if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.INVALID_VEHICLE_PRICE.getValue()) {
+                throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.INVALID_VEHICLE_PRICE.getValue());
             }
             VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
             insuranceCount++;
             return insurance;
         } else if (request.getCustomer().getInsureObject() instanceof Home) {
-            if (((Home) request.getCustomer().getInsureObject()).getPrice() < IInsuranceObjectParameter.INVALID_HOME_PRICE) {
-                throw new InvalidPriceException("Wrong price. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_PRICE);
+            if (((Home) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.INVALID_HOME_PRICE.getValue()) {
+                throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.INVALID_HOME_PRICE.getValue());
             }
-            if (((Home) request.getCustomer().getInsureObject()).getM2() < IInsuranceObjectParameter.INVALID_HOME_M2) {
-                throw new InvalidM2Exception("Wrong M2. Please use greater than " + IInsuranceObjectParameter.INVALID_HOME_M2);
+            if (((Home) request.getCustomer().getInsureObject()).getM2() < InsuranceObjectParameter.INVALID_HOME_M2.getValue()) {
+                throw new InvalidM2Exception("Wrong M2. Please use greater than " + InsuranceObjectParameter.INVALID_HOME_M2.getValue());
             }
             HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Home) request.getCustomer().getInsureObject());
             insuranceCount++;
