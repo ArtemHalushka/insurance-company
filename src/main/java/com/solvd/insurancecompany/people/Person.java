@@ -15,10 +15,10 @@ public abstract class Person {
     protected int personId = (int) (Math.random() * 10001);
 
     public Person(String name, Date birthDate, String address, String phoneNumber) throws StringLengthException {
-        if (address.length() > InsuranceObjectParameter.INVALID_STRING_LENGTH.getValue()) {
+        if (address.length() > InsuranceObjectParameter.MAX_STRING_LENGTH.getValue()) {
             throw new StringLengthException("Too long address");
         } 
-        if (name.length() > InsuranceObjectParameter.INVALID_STRING_LENGTH.getValue()) {
+        if (name.length() > InsuranceObjectParameter.MAX_STRING_LENGTH.getValue()) {
             throw new StringLengthException("Too long name");
         }
         this.name = name;

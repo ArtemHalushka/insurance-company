@@ -10,7 +10,7 @@ public enum CalculatorValue {
 
     private final double value;
 
-    CalculatorValues(double value) {
+    CalculatorValue(double value) {
         this.value = value;
     }
 

@@ -28,7 +28,7 @@ public class Main {
             Employee sam = new Employee("Sam Smith", dateFormat.parse("3-05-1989"), "Canada", "992039203", "Clerk");
             insuranceCompany.addEmployee(sam);
             Customer michael = new Customer("Michael Flint", dateFormat.parse("11-12-2001"), "United states",
-                    "8839021", michaelIsSmoker);
+                    "8839021","Michael Health", michaelIsSmoker);
             michael.addHealthDisease("Diabetes");
             michael.addHealthDisease("High blood pressure");
             michael.addMedication("Mezim");

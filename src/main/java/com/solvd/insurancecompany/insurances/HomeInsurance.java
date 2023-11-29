@@ -2,7 +2,7 @@ package com.solvd.insurancecompany.insurances;
 
 import com.solvd.insurancecompany.calculators.PriceCalculator;
 import com.solvd.insurancecompany.objects.Home;
-import com.solvd.insurancecompany.objects.Level;
+import com.solvd.insurancecompany.objects.LuxuryLevel;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
 
@@ -17,10 +17,10 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
         finalPrice = PriceCalculator.calculateInsurancePrice(homeType);
-        if (Level.HIGH_LEVEL.equals(homeType.insuranceObjectLevel())) {
+        if (LuxuryLevel.HIGH_LEVEL.equals(homeType.insuranceObjectLevel())) {
             finalPrice = finalPrice - (finalPrice / 10);
         }
-        if (Level.LOW_LEVEL.equals(homeType.insuranceObjectLevel())) {
+        if (LuxuryLevel.LOW_LEVEL.equals(homeType.insuranceObjectLevel())) {
             finalPrice = finalPrice + (finalPrice / 10);
         }
     }

@@ -1,5 +1,7 @@
 package com.solvd.insurancecompany.objects;
 
+import com.solvd.insurancecompany.exceptions.InsuranceObjectParameter;
+
 import java.util.Objects;
 
 public class Vehicle extends InsureObject {
@@ -20,12 +22,12 @@ public class Vehicle extends InsureObject {
     }
 
     public String insuranceObjectLevel() {
-        if (price > Price.VEHICLE_PRICE.getValue() && year > Year.VEHICLE_LEVEL_YEAR.getValue()) {
-            return Level.HIGH_LEVEL.getDescription();
-        } else if (price > Price.VEHICLE_PRICE.getValue() || year > Year.VEHICLE_LEVEL_YEAR.getValue()) {
-            return Level.MEDIUM_LEVEL.getDescription();
+        if (price > InsuranceObjectParameter.BASE_VEHICLE_PRICE.getValue() && year > InsuranceObjectParameter.BASE_VEHICLE_LEVEL_YEAR.getValue()) {
+            return LuxuryLevel.HIGH_LEVEL.getDescription();
+        } else if (price > InsuranceObjectParameter.BASE_VEHICLE_PRICE.getValue() || year > InsuranceObjectParameter.BASE_VEHICLE_LEVEL_YEAR.getValue()) {
+            return LuxuryLevel.MEDIUM_LEVEL.getDescription();
         } else {
-            return Level.LOW_LEVEL.getDescription();
+            return LuxuryLevel.LOW_LEVEL.getDescription();
         }
     }
 

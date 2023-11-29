@@ -8,8 +8,8 @@ public class Health extends InsureObject {
     private boolean smoker;
     private HashSet<String> medications = new HashSet<>();
 
-    public Health(boolean smoker) {
-        super();
+    public Health(String type, boolean smoker) {
+        super(type);
         this.smoker = smoker;
     }
 

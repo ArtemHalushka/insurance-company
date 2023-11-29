@@ -8,7 +8,7 @@ public enum LuxuryLevel {
 
     private final String description;
 
-    Level(String description) {
+    LuxuryLevel(String description) {
         this.description = description;
     }
 

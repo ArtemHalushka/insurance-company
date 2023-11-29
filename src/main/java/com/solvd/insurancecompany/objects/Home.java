@@ -1,5 +1,7 @@
 package com.solvd.insurancecompany.objects;
 
+import com.solvd.insurancecompany.exceptions.InsuranceObjectParameter;
+
 import java.util.Objects;
 public class Home extends InsureObject {
 
@@ -8,7 +10,6 @@ public class Home extends InsureObject {
 
     public Home(String type, double price, double m2) {
         super(type);
-        this.type = type;
         this.price = price;
         this.m2 = m2;
     }
@@ -22,12 +23,12 @@ public class Home extends InsureObject {
     }
 
     public String insuranceObjectLevel() {
-        if (price > Price.HOME_PRICE.getValue() && m2 > Area.HOME_M2_AREA.getValue()) {
-            return Level.HIGH_LEVEL.getDescription();
-        }else if (price > Price.HOME_PRICE.getValue() || m2 > Area.HOME_M2_AREA.getValue()) {
-            return Level.MEDIUM_LEVEL.getDescription();
+        if (price > InsuranceObjectParameter.BASE_HOME_PRICE.getValue() && m2 > InsuranceObjectParameter.BASE_HOME_PRICE.getValue()) {
+            return LuxuryLevel.HIGH_LEVEL.getDescription();
+        }else if (price > InsuranceObjectParameter.BASE_HOME_PRICE.getValue() || m2 > InsuranceObjectParameter.BASE_HOME_M2_AREA.getValue()) {
+            return LuxuryLevel.MEDIUM_LEVEL.getDescription();
         } else {
-            return Level.LOW_LEVEL.getDescription();
+            return LuxuryLevel.LOW_LEVEL.getDescription();
         }
     }
 

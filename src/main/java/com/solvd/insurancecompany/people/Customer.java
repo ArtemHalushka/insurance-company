@@ -13,9 +13,9 @@ public class Customer extends Person {
     private InsureObject object;
     private Health health;
 
-    public Customer(String name, Date birthDate, String address, String phoneNumber, Boolean smoker) throws StringLengthException {
+    public Customer(String name, Date birthDate, String address, String phoneNumber, String type, boolean smoker) throws StringLengthException {
         super(name, birthDate, address, phoneNumber);
-        this.health = new Health(smoker);
+        this.health = new Health(type, smoker);
     }
 
     public Customer(String name, Date birthDate, String address, String phoneNumber, String vehicleType, double price, String fuel, int year) throws StringLengthException {
