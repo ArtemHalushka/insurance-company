@@ -1,13 +1,19 @@
 package com.solvd.insurancecompany.company;
 
+import com.solvd.insurancecompany.Main;
 import com.solvd.insurancecompany.customlinkedlist.CustomLinkedList;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.people.*;
 import com.solvd.insurancecompany.exceptions.*;
 import com.solvd.insurancecompany.objects.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
+
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     private String name;
     private LinkedList<Employee> employees = new LinkedList<>();
@@ -75,6 +81,14 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     public Queue<InsuranceRequest> getRequests() {
         return requests;
+    }
+
+    public void printEmployees() {
+        employees.forEach(employee -> LOGGER.info(employee.toString()));
+    }
+
+    public void printCustomers() {
+        customers.forEach(customer -> LOGGER.info(customer.toString()));
     }
 
     @Override

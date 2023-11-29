@@ -1,5 +1,7 @@
 package com.solvd.insurancecompany.customlinkedlist;
 
+import java.util.function.Consumer;
+
 public class CustomLinkedList<T> {
 
     private Node head;
@@ -20,6 +22,16 @@ public class CustomLinkedList<T> {
         }
         incrementSize();
     }
+
+    public void forEach(Consumer<T> action) {
+        Node<T> current = head;
+
+        while (current != null) {
+            action.accept(current.value);
+            current = current.next;
+        }
+    }
+
 
     public void remove(T person) {
         if (head.value.equals(person)) {
