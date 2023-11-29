@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.calculators;
 
-public enum CalculatorValues {
+public enum CalculatorValue {
 
     INSURANCE_COMPANY_COEFFICIENT(10),
     HOME_PRICE_PERCENT(0.1),
