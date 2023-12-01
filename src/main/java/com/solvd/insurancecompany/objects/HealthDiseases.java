@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.objects;
 
-public enum HealthDiseases {
+public enum HealthDisease {
 
     DIABETES("Diabetes"),
     HIGH_BLOOD_PRESSURE("High blood pressure");
