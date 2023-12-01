@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.objects;
 
-public enum Medications {
+public enum Medication {
 
     MEZIM("Mezim");
 
