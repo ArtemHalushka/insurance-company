@@ -34,11 +34,11 @@ public class Vehicle extends InsureObject {
     }
 
     @Override
-    public String getType() { return type; }
+    public String getObjectName() { return objectName; }
 
     @Override
     public String toString() {
-        return "Vehicle: " + "id (" + objectId + ") " + type + " " + price + " " + fuel + " " + year;
+        return "Vehicle: " + "id (" + objectId + ") " + objectName + " " + price + " " + fuel + " " + year;
     }
 
     @Override
@@ -50,13 +50,13 @@ public class Vehicle extends InsureObject {
             return false;
         }
         Vehicle self = (Vehicle) object;
-        return Objects.equals(type, self.type) && Objects.equals(price, self.price)
+        return Objects.equals(objectName, self.objectName) && Objects.equals(price, self.price)
                 && Objects.equals(fuel, self.fuel) && Objects.equals(year, self.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, price, fuel, year);
+        return Objects.hash(objectName, price, fuel, year);
     }
 
     @Override

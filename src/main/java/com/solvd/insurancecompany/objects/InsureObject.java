@@ -2,17 +2,17 @@ package com.solvd.insurancecompany.objects;
 
 public abstract class InsureObject {
 
-    protected String type;
+    protected String objectName;
     protected int objectId;
     protected ObjectType objectType;
 
-    public InsureObject(String type) {
+    public InsureObject(String objectName) {
         this.objectId = (int) (Math.random() * 10001);
-        this.type = type;
+        this.objectName = objectName;
     }
 
-    public String getType() {
-        return type;
+    public String getObjectName() {
+        return objectName;
     }
 
     public ObjectType getObjectType() {

@@ -35,11 +35,11 @@ public class Home extends InsureObject {
     }
 
     @Override
-    public String getType() { return type; }
+    public String getObjectName() { return objectName; }
 
     @Override
     public String toString() {
-        return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
+        return "Home: " + "id (" + objectId + ") " + objectName + " " + price + " " + m2;
     }
 
     @Override
@@ -51,12 +51,12 @@ public class Home extends InsureObject {
             return false;
         }
         Home self = (Home) object;
-        return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
+        return Objects.equals(objectName, self.objectName) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, price, m2);
+        return Objects.hash(objectName, price, m2);
     }
 
     @Override

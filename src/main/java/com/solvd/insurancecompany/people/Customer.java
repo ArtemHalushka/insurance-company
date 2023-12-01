@@ -1,10 +1,7 @@
 package com.solvd.insurancecompany.people;
 
 import com.solvd.insurancecompany.exceptions.StringLengthException;
-import com.solvd.insurancecompany.objects.Health;
-import com.solvd.insurancecompany.objects.InsureObject;
-import com.solvd.insurancecompany.objects.Vehicle;
-import com.solvd.insurancecompany.objects.Home;
+import com.solvd.insurancecompany.objects.*;
 
 import java.util.Date;
 
@@ -31,21 +28,24 @@ public class Customer extends Person {
     public InsureObject getInsureObject() {
         return object;
     }
-    public Health getHealth() { return health; }
 
-    public void addHealthDisease(String disease) {
+    public Health getHealth() {
+        return health;
+    }
+
+    public void addHealthDisease(HealthDisease disease) {
         health.addHealthDisease(disease);
     }
 
-    public void removeHealthDisease(String disease) {
+    public void removeHealthDisease(HealthDisease disease) {
         health.removeHealthDisease(disease);
     }
 
-    public void addMedication(String medicine) {
+    public void addMedication(Medication medicine) {
         health.addMedications(medicine);
     }
 
-    public void removeMedication(String medicine) {
+    public void removeMedication(Medication medicine) {
         health.removeMedications(medicine);
     }
 
