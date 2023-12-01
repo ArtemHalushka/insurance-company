@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.people;
 
-import com.solvd.insurancecompany.exceptions.IInsuranceObjectParameter;
+import com.solvd.insurancecompany.exceptions.InsuranceObjectParameter;
 import com.solvd.insurancecompany.exceptions.StringLengthException;
 
 import java.util.Date;
@@ -15,10 +15,10 @@ public abstract class Person {
     protected int personId = (int) (Math.random() * 10001);
 
     public Person(String name, Date birthDate, String address, String phoneNumber) throws StringLengthException {
-        if (address.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
+        if (address.length() > InsuranceObjectParameter.MAX_STRING_LENGTH.getValue()) {
             throw new StringLengthException("Too long address");
         } 
-        if (name.length() > IInsuranceObjectParameter.INVALID_STRING_LENGTH) {
+        if (name.length() > InsuranceObjectParameter.MAX_STRING_LENGTH.getValue()) {
             throw new StringLengthException("Too long name");
         }
         this.name = name;
@@ -47,8 +47,7 @@ public abstract class Person {
     public boolean equals(Object object) {
         if (this == object) {
             return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
+        } else if (object == null || getClass() != object.getClass()) {
             return false;
         }
         Person self = (Person) object;

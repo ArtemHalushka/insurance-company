@@ -4,36 +4,38 @@ import java.util.HashSet;
 
 public class Health extends InsureObject {
 
-    private HashSet<String> healthDiseases  = new HashSet<>();
+    private static HashSet<HealthDisease> healthDiseases  = new HashSet<>();
     private boolean smoker;
-    private HashSet<String> medications = new HashSet<>();
+    private HashSet<Medication> medications = new HashSet<>();
+    private final ObjectType objectType;
 
-    public Health(boolean smoker) {
-        super();
+    public Health(String type, boolean smoker) {
+        super(type);
+        objectType = ObjectType.HEALTH;
         this.smoker = smoker;
     }
 
-    public HashSet<String> getHealthDiseases() {
+    public HashSet<HealthDisease> getHealthDiseases() {
         return healthDiseases;
     }
 
-    public void addHealthDisease(String disease) {
+    public void addHealthDisease(HealthDisease disease) {
         healthDiseases.add(disease);
     }
 
-    public void removeHealthDisease(String disease) {
+    public void removeHealthDisease(HealthDisease disease) {
         healthDiseases.remove(disease);
     }
 
-    public void addMedications(String medication) {
+    public void addMedications(Medication medication) {
         medications.add(medication);
     }
 
-    public void removeMedications(String medication) {
+    public void removeMedications(Medication medication) {
         medications.remove(medication);
     }
 
-    public HashSet<String> getMedications() {
+    public HashSet<Medication> getMedications() {
         return medications;
     }
 
@@ -44,6 +46,11 @@ public class Health extends InsureObject {
     @Override
     public String toString() {
 
-        return "Health: id (" + objectId + ") " + String.join(" ", healthDiseases) + " smoker (" + smoker + ") " + String.join(" ", medications);
+        return "Health: id (" + objectId + ") " + String.join(" ", healthDiseases.toString()) + " smoker (" + smoker + ") " + String.join(" ", medications.toString());
+    }
+
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }

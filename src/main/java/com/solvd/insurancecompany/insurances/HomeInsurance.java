@@ -1,8 +1,9 @@
 package com.solvd.insurancecompany.insurances;
 
-import com.solvd.insurancecompany.calculators.PriceCalculator;
+import com.solvd.insurancecompany.calculators.CalculatorValue;
+import com.solvd.insurancecompany.calculators.InsurancePriceCalculator;
 import com.solvd.insurancecompany.objects.Home;
-import com.solvd.insurancecompany.objects.ILevel;
+import com.solvd.insurancecompany.objects.LuxuryLevel;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
 
@@ -16,15 +17,18 @@ public class HomeInsurance extends Insurance {
                          Date issueDate, Date endDate, Home homeType) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
-        finalPrice = PriceCalculator.calculateInsurancePrice(homeType);
-        if (ILevel.HIGH_LEVEL.equals(homeType.insuranceObjectLevel())) {
-            finalPrice = finalPrice - (finalPrice / 10);
-        }
-        if (ILevel.LOW_LEVEL.equals(homeType.insuranceObjectLevel())) {
-            finalPrice = finalPrice + (finalPrice / 10);
-        }
+        InsurancePriceCalculator<Home> priceCalculator = insureObject -> {
+            finalPrice = (CalculatorValue.HOME_PRICE_PERCENT.getValue() / 100) * insureObject.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue();
+            if (LuxuryLevel.HIGH_LEVEL.getDescription().equals(insureObject.insuranceObjectLevel())) {
+                finalPrice -= finalPrice / 10;
+            }
+            if (LuxuryLevel.LOW_LEVEL.getDescription().equals(homeType.insuranceObjectLevel())) {
+                finalPrice += finalPrice / 10;
+            }
+            return finalPrice;
+        };
+        finalPrice = priceCalculator.calculateInsurancePrice(homeType);
     }
-
     @Override
     public String toString() {
         return "Insurance: " + super.getInsuranceName() + " " + super.getIssueEmployee() + " " + super.getInsuranceCustomer() + " Price "

@@ -1,44 +1,45 @@
 package com.solvd.insurancecompany.objects;
 
+import com.solvd.insurancecompany.exceptions.InsuranceObjectParameter;
+
 import java.util.Objects;
+public class Home extends InsureObject {
 
-public class Home extends InsureObject implements ILevel {
-
-    private final String type;
     private final double price;
-    private final int m2;
+    private final double m2;
+    private final ObjectType objectType;
 
-    public Home(String type, double price, int m2) {
-        super();
-        this.type = type;
+    public Home(String type, double price, double m2) {
+        super(type);
+        objectType = ObjectType.HOME;
         this.price = price;
         this.m2 = m2;
-    }
-
-    @Override
-    public String insuranceObjectLevel() {
-        if (price > HOME_LEVEL_PRICE && m2 > HOME_LEVEL_M2) {
-            return HIGH_LEVEL;
-        }
-
-        if (price > HOME_LEVEL_PRICE || m2 > HOME_LEVEL_M2) {
-            return MEDIUM_LEVEL;
-        } else {
-            return LOW_LEVEL;
-        }
     }
 
     public double getPrice() {
         return price;
     }
 
-    public int getM2() {
+    public double getM2() {
         return m2;
     }
 
+    public String insuranceObjectLevel() {
+        if (price > InsuranceObjectParameter.BASE_HOME_PRICE.getValue() && m2 > InsuranceObjectParameter.BASE_HOME_PRICE.getValue()) {
+            return LuxuryLevel.HIGH_LEVEL.getDescription();
+        }else if (price > InsuranceObjectParameter.BASE_HOME_PRICE.getValue() || m2 > InsuranceObjectParameter.BASE_HOME_M2_AREA.getValue()) {
+            return LuxuryLevel.MEDIUM_LEVEL.getDescription();
+        } else {
+            return LuxuryLevel.LOW_LEVEL.getDescription();
+        }
+    }
+
+    @Override
+    public String getObjectName() { return objectName; }
+
     @Override
     public String toString() {
-        return "Home: " + "id (" + objectId + ") " + type + " " + price + " " + m2;
+        return "Home: " + "id (" + objectId + ") " + objectName + " " + price + " " + m2;
     }
 
     @Override
@@ -50,11 +51,16 @@ public class Home extends InsureObject implements ILevel {
             return false;
         }
         Home self = (Home) object;
-        return Objects.equals(type, self.type) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
+        return Objects.equals(objectName, self.objectName) && Objects.equals(price, self.price) && Objects.equals(m2, self.m2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, price, m2);
+        return Objects.hash(objectName, price, m2);
+    }
+
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }

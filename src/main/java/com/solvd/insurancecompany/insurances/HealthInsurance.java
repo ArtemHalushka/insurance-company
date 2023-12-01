@@ -1,6 +1,9 @@
 package com.solvd.insurancecompany.insurances;
 
-import com.solvd.insurancecompany.calculators.PriceCalculator;
+import com.solvd.insurancecompany.calculators.CalculatorValue;
+import com.solvd.insurancecompany.calculators.HealthInsurancePriceCalculator;
+import com.solvd.insurancecompany.calculators.InsurancePriceCalculator;
+import com.solvd.insurancecompany.objects.Health;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
 
@@ -11,9 +14,15 @@ public class HealthInsurance extends Insurance {
     public HealthInsurance(String insuranceName, Employee issueEmployee, Customer insuranceCustomer,
                            Date issueDate, Date endDate) {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
-        finalPrice = PriceCalculator.calculateInsurancePrice(insuranceCustomer.getInsureObject());
+        HealthInsurancePriceCalculator<Customer> priceCalculator = insureCustomer -> {
+            if (insureCustomer.getHealth().getHealthDiseases().size() == 0) {
+                return CalculatorValue.MINIMAL_HEALTH_PRICE.getValue();
+            }
+            finalPrice = (CalculatorValue.HEALTH_PRICE_PERCENT.getValue() / 100) * ((insureCustomer.getHealth().getHealthDiseases().size()) * 300) * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue();
+            return finalPrice;
+        };
+        finalPrice = priceCalculator.calculateHealthInsurancePrice(insuranceCustomer);
     }
-
 
     @Override
     public String toString() {

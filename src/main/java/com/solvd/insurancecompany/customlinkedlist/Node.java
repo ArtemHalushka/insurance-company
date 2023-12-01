@@ -1,9 +1,9 @@
-package com.solvd.insurancecompany.company;
+package com.solvd.insurancecompany.customlinkedlist;
 
 public class Node<T> {
 
-    Node next;
-    T value;
+    protected Node next;
+    protected T value;
 
     public Node(T valueNode) {
         value = valueNode;
