@@ -7,7 +7,7 @@ public enum HealthDisease {
 
     private final String value;
 
-    HealthDiseases(String value) {
+    HealthDisease(String value) {
         this.value = value;
     }
 

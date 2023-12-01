@@ -11,12 +11,12 @@ public class Vehicle extends InsureObject {
     private final int year;
     private final ObjectType objectType;
 
-    public Vehicle(String type, double price, String fuel, int year) {
-        super(type);
-        objectType = ObjectType.VEHICLE;
+    public Vehicle(String objectName, double price, String fuel, int year) {
+        super(objectName);
         this.price = price;
         this.fuel = fuel;
         this.year = year;
+        objectType = ObjectType.VEHICLE;
     }
 
     public double getPrice() {

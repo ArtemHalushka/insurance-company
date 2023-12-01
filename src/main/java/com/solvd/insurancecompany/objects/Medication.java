@@ -6,7 +6,7 @@ public enum Medication {
 
     private final String value;
 
-    Medications(String value) {
+    Medication(String value) {
         this.value = value;
     }
 
