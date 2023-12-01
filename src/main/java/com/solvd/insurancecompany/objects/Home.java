@@ -7,9 +7,11 @@ public class Home extends InsureObject {
 
     private final double price;
     private final double m2;
+    private final ObjectType objectType;
 
     public Home(String type, double price, double m2) {
         super(type);
+        objectType = ObjectType.HOME;
         this.price = price;
         this.m2 = m2;
     }
@@ -55,5 +57,10 @@ public class Home extends InsureObject {
     @Override
     public int hashCode() {
         return Objects.hash(type, price, m2);
+    }
+
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }

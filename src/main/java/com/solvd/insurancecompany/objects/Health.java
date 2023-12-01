@@ -7,9 +7,11 @@ public class Health extends InsureObject {
     private static HashSet<String> healthDiseases  = new HashSet<>();
     private boolean smoker;
     private HashSet<String> medications = new HashSet<>();
+    private final ObjectType objectType;
 
     public Health(String type, boolean smoker) {
         super(type);
+        objectType = ObjectType.HEALTH;
         this.smoker = smoker;
     }
 
@@ -45,5 +47,10 @@ public class Health extends InsureObject {
     public String toString() {
 
         return "Health: id (" + objectId + ") " + String.join(" ", healthDiseases) + " smoker (" + smoker + ") " + String.join(" ", medications);
+    }
+
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }

@@ -9,9 +9,11 @@ public class Vehicle extends InsureObject {
     private final double price;
     private final String fuel;
     private final int year;
+    private final ObjectType objectType;
 
     public Vehicle(String type, double price, String fuel, int year) {
         super(type);
+        objectType = ObjectType.VEHICLE;
         this.price = price;
         this.fuel = fuel;
         this.year = year;
@@ -55,5 +57,10 @@ public class Vehicle extends InsureObject {
     @Override
     public int hashCode() {
         return Objects.hash(type, price, fuel, year);
+    }
+
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }

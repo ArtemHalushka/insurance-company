@@ -74,14 +74,14 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
-        if (request.getCustomer().getInsureObject() instanceof Vehicle) {
+        if (request.getCustomer().getInsureObject().getObjectType() == ObjectType.VEHICLE) {
             if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.MIN_VEHICLE_PRICE.getValue()) {
                 throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.MIN_VEHICLE_PRICE.getValue());
             }
             VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
             insuranceCount++;
             return insurance;
-        } else if (request.getCustomer().getInsureObject() instanceof Home) {
+        } else if (request.getCustomer().getInsureObject().getObjectType() ==  ObjectType.HOME) {
             if (((Home) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.MIN_HOME_PRICE.getValue()) {
                 throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.MIN_HOME_PRICE.getValue());
             }
@@ -91,7 +91,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
             HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Home) request.getCustomer().getInsureObject());
             insuranceCount++;
             return insurance;
-        } else if (request.getCustomer().getHealth() instanceof Health) {
+        } else if (request.getCustomer().getHealth().getObjectType() == ObjectType.HEALTH) {
             HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate);
             insuranceCount++;
             return insurance;

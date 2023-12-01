@@ -4,6 +4,7 @@ public abstract class InsureObject {
 
     protected String type;
     protected int objectId;
+    protected ObjectType objectType;
 
     public InsureObject(String type) {
         this.objectId = (int) (Math.random() * 10001);
@@ -12,5 +13,9 @@ public abstract class InsureObject {
 
     public String getType() {
         return type;
+    }
+
+    public ObjectType getObjectType() {
+        return objectType;
     }
 }
