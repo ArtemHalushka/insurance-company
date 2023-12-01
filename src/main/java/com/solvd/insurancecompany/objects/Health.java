@@ -13,7 +13,7 @@ public class Health extends InsureObject {
         this.smoker = smoker;
     }
 
-    public static HashSet<String> getHealthDiseases() {
+    public HashSet<String> getHealthDiseases() {
         return healthDiseases;
     }
 

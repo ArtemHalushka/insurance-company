@@ -17,15 +17,16 @@ public class VehicleInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.vehicleType = vehicleType;
         InsurancePriceCalculator<Vehicle> priceCalculator = insureObject -> {
-            finalPrice = ((CalculatorValue.VEHICLE_PRICE_PERCENT.getValue() / 100) * vehicleType.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue());
-            if (LuxuryLevel.HIGH_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+            finalPrice = ((CalculatorValue.VEHICLE_PRICE_PERCENT.getValue() / 100) * insureObject.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue());
+            if (LuxuryLevel.HIGH_LEVEL.getDescription().equals(insureObject.insuranceObjectLevel())) {
                 finalPrice -= finalPrice / 10;
             }
-            if (LuxuryLevel.LOW_LEVEL.equals(vehicleType.insuranceObjectLevel())) {
+            if (LuxuryLevel.LOW_LEVEL.getDescription().equals(insureObject.insuranceObjectLevel())) {
                 finalPrice += finalPrice / 10;
             }
             return finalPrice;
         };
+        finalPrice = priceCalculator.calculateInsurancePrice(vehicleType);
     }
 
     @Override

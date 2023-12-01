@@ -18,15 +18,16 @@ public class HomeInsurance extends Insurance {
         super(insuranceName, issueEmployee, insuranceCustomer, issueDate, endDate);
         this.homeType = homeType;
         InsurancePriceCalculator<Home> priceCalculator = insureObject -> {
-            finalPrice = (CalculatorValue.HOME_PRICE_PERCENT.getValue() / 100) * homeType.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue();
-            if (LuxuryLevel.HIGH_LEVEL.equals(homeType.insuranceObjectLevel())) {
+            finalPrice = (CalculatorValue.HOME_PRICE_PERCENT.getValue() / 100) * insureObject.getPrice() * CalculatorValue.INSURANCE_COMPANY_COEFFICIENT.getValue();
+            if (LuxuryLevel.HIGH_LEVEL.getDescription().equals(insureObject.insuranceObjectLevel())) {
                 finalPrice -= finalPrice / 10;
             }
-            if (LuxuryLevel.LOW_LEVEL.equals(homeType.insuranceObjectLevel())) {
+            if (LuxuryLevel.LOW_LEVEL.getDescription().equals(homeType.insuranceObjectLevel())) {
                 finalPrice += finalPrice / 10;
             }
             return finalPrice;
         };
+        finalPrice = priceCalculator.calculateInsurancePrice(homeType);
     }
     @Override
     public String toString() {

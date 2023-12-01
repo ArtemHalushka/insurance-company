@@ -3,6 +3,8 @@ package com.solvd.insurancecompany;
 import com.solvd.insurancecompany.company.InsuranceCompany;
 import com.solvd.insurancecompany.exceptions.*;
 import com.solvd.insurancecompany.insurances.*;
+import com.solvd.insurancecompany.objects.HealthDiseases;
+import com.solvd.insurancecompany.objects.Medications;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
 import com.solvd.insurancecompany.util.Printer;
@@ -29,9 +31,9 @@ public class Main {
             insuranceCompany.addEmployee(sam);
             Customer michael = new Customer("Michael Flint", dateFormat.parse("11-12-2001"), "United states",
                     "8839021","Michael Health", michaelIsSmoker);
-            michael.addHealthDisease("Diabetes");
-            michael.addHealthDisease("High blood pressure");
-            michael.addMedication("Mezim");
+            michael.addHealthDisease(HealthDiseases.DIABETES.getValue());
+            michael.addHealthDisease(HealthDiseases.HIGH_BLOOD_PRESSURE.getValue());
+            michael.addMedication(Medications.MEZIM.getValue());
             InsuranceRequest michaelRequest = insuranceCompany.requestInsurance(michael);
             insuranceCompany.addCustomer(michael);
             Customer lena = new Customer("Lena Lorens", dateFormat.parse("22-06-2000"), "United States", "9901243", "5 Series", 15000, "Gas", 2007);
