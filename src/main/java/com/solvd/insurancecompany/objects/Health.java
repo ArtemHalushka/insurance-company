@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Health extends InsureObject {
 
-    private static HashSet<String> healthDiseases  = new HashSet<>();
+    private static HashSet<HealthDisease> healthDiseases  = new HashSet<>();
     private boolean smoker;
     private HashSet<String> medications = new HashSet<>();
     private final ObjectType objectType;
