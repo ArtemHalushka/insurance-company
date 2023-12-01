@@ -6,7 +6,7 @@ public class Health extends InsureObject {
 
     private static HashSet<HealthDisease> healthDiseases  = new HashSet<>();
     private boolean smoker;
-    private HashSet<String> medications = new HashSet<>();
+    private HashSet<Medication> medications = new HashSet<>();
     private final ObjectType objectType;
 
     public Health(String type, boolean smoker) {
