@@ -11,8 +11,8 @@ public class Health extends InsureObject {
 
     public Health(String type, boolean smoker) {
         super(type);
-        objectType = ObjectType.HEALTH;
         this.smoker = smoker;
+        objectType = ObjectType.HEALTH;
     }
 
     public HashSet<HealthDisease> getHealthDiseases() {

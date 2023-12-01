@@ -56,7 +56,7 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     public void findVehicleObject(String insureObjectName) {
         customers.forEach(customer -> {
-            if (insureObjectName.equals(customer.getInsureObject().getType())) {
+            if (insureObjectName.equals(customer.getInsureObject().getObjectName())) {
                 LOGGER.info(customer.getInsureObject().toString());
             }
         });
@@ -74,14 +74,20 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
     @Override
     public Insurance issueInsurance(InsuranceRequest request, Employee employee, String insuranceName, Date issueDate, Date endDate) throws InvalidPriceException, InvalidM2Exception, InvalidInsureObjectException {
-        if (request.getCustomer().getInsureObject().getObjectType() == ObjectType.VEHICLE) {
+        if (request.getCustomer().getInsureObject() == null) {
+            if (request.getCustomer().getHealth().getObjectType() == ObjectType.HEALTH) {
+                HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate);
+                insuranceCount++;
+                return insurance;
+            }
+        } else if (request.getCustomer().getInsureObject().getObjectType() == ObjectType.VEHICLE) {
             if (((Vehicle) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.MIN_VEHICLE_PRICE.getValue()) {
                 throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.MIN_VEHICLE_PRICE.getValue());
             }
             VehicleInsurance insurance = new VehicleInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Vehicle) request.getCustomer().getInsureObject());
             insuranceCount++;
             return insurance;
-        } else if (request.getCustomer().getInsureObject().getObjectType() ==  ObjectType.HOME) {
+        } else if (request.getCustomer().getInsureObject().getObjectType() == ObjectType.HOME) {
             if (((Home) request.getCustomer().getInsureObject()).getPrice() < InsuranceObjectParameter.MIN_HOME_PRICE.getValue()) {
                 throw new InvalidPriceException("Wrong price. Please use greater than " + InsuranceObjectParameter.MIN_HOME_PRICE.getValue());
             }
@@ -89,10 +95,6 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
                 throw new InvalidM2Exception("Wrong M2. Please use greater than " + InsuranceObjectParameter.MIN_HOME_M2.getValue());
             }
             HomeInsurance insurance = new HomeInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate, (Home) request.getCustomer().getInsureObject());
-            insuranceCount++;
-            return insurance;
-        } else if (request.getCustomer().getHealth().getObjectType() == ObjectType.HEALTH) {
-            HealthInsurance insurance = new HealthInsurance(insuranceName, employee, request.getCustomer(), issueDate, endDate);
             insuranceCount++;
             return insurance;
         }

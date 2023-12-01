@@ -52,6 +52,6 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return "Person: " + "id (" + personId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " +
-                super.getPhoneNumber() + " " + object;
+                super.getPhoneNumber() + " " + object + " " + health;
     }
 }

@@ -9,11 +9,12 @@ public class Home extends InsureObject {
     private final double m2;
     private final ObjectType objectType;
 
-    public Home(String type, double price, double m2) {
-        super(type);
-        objectType = ObjectType.HOME;
+    public Home(String objectName, double price, double m2) {
+        super(objectName);
         this.price = price;
         this.m2 = m2;
+        objectType = ObjectType.HOME;
+
     }
 
     public double getPrice() {
