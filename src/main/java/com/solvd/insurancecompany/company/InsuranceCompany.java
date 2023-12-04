@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
 
@@ -54,12 +55,32 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
         customers.forEach(customer -> LOGGER.info(customer.toString()));
     }
 
-    public void findVehicleObject(String insureObjectName) {
+    public void findInsureObjectByName(String insureObjectName) {
         customers.forEach(customer -> {
             if (insureObjectName.equals(customer.getInsureObject().getObjectName())) {
                 LOGGER.info(customer.getInsureObject().toString());
             }
         });
+    }
+
+    public List<Customer> findAllCustomerByName(String customerName) {
+        List<Customer> filteredCustomers = new ArrayList<>();
+        customers.forEach(customer -> {
+            if (customerName.equals(customer.getName())) {
+                filteredCustomers.add(customer);
+            }
+        });
+        return filteredCustomers;
+    }
+
+    public List<Customer> findAllCustomerByAddress(String customerAddress) {
+        List<Customer> filteredCustomers = new ArrayList<>();
+        customers.forEach(customer -> {
+            if (customerAddress.equals(customer.getAddress())) {
+                filteredCustomers.add(customer);
+            }
+        });
+        return filteredCustomers;
     }
 
     public void findMinimalPriceForInsurance() {
@@ -70,6 +91,27 @@ public class InsuranceCompany implements ICompanyManage, IIssue, IRequest {
                     .orElse(0.0);
             LOGGER.info("Minimal price of " + key + " is: " + minimalPrice);
         });
+    }
+
+    public List<Employee> findAllEmployeesByName(String employeeName) {
+        List<Employee> filteredEmployees = employees.stream()
+                .filter(employee -> employeeName.equals(employee.getName()))
+                .collect(Collectors.toList());
+        return filteredEmployees;
+    }
+
+    public List<Employee> findAllEmployeesByAddress(String employeeAddress) {
+        List<Employee> filteredEmployees = employees.stream()
+                .filter(employee -> employeeAddress.equals(employee.getAddress()))
+                .collect(Collectors.toList());
+        return filteredEmployees;
+    }
+
+    public List<Employee> findAllEmployeeByPosition(String position) {
+        List<Employee> filteredEmployees = employees.stream()
+                .filter(employee -> position.equals(employee.getPosition()))
+                .collect(Collectors.toList());
+        return filteredEmployees;
     }
 
     @Override

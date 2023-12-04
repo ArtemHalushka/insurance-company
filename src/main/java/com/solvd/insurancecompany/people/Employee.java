@@ -13,6 +13,10 @@ public class Employee extends Person {
         this.position = position;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         return "Person: " + "id (" + personId + ") " + super.getName() + " " + super.getBirthDate() + " " + super.getAddress() + " " + super.getPhoneNumber() + " " + position;
