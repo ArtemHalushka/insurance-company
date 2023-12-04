@@ -5,11 +5,16 @@ import com.solvd.insurancecompany.exceptions.*;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.objects.HealthDisease;
 import com.solvd.insurancecompany.objects.Medication;
+import com.solvd.insurancecompany.objects.ObjectType;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
 import com.solvd.insurancecompany.util.Printer;
 import org.apache.logging.log4j.*;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,8 +67,20 @@ public class Main {
             insuranceCompany.addInsuranceList("HomeInsurances", homeInsuranceList);
             insuranceCompany.addInsuranceList("HealthInsurances", healthInsuranceList);
             LOGGER.info(insuranceCompany.getCustomersList());
+            // Reflection Class import
+
+            Class<?> calcClass = Class.forName("com.solvd.insurancecompany.util.Calculator");
+            Constructor<?> constructor = calcClass.getDeclaredConstructor(double.class, double.class);
+
+            Method addNumbers = calcClass.getMethod("addNumbers");
+            Method multiplyNumbers = calcClass.getMethod("multiplyNumbers");
+
+            Object calculator = constructor.newInstance(12312, 12312);
+
+            LOGGER.info(addNumbers.invoke(calculator));
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
-                 ParseException | InvalidPersonException e) {
+                 ParseException | InvalidPersonException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             LOGGER.error("Exception:", e);
         }
     }
