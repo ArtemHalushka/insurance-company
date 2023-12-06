@@ -1,8 +1,10 @@
 package com.solvd.filereader;
 
+import com.solvd.insurancecompany.Main;
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -10,13 +12,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class Main {
-
+public class FileReader {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void readFile(String userFile) {
         try {
-            File file = new File(Main.class.getClassLoader().getResource("input.txt").getFile());
+            File file = new File(FileReader.class.getClassLoader().getResource(userFile).getFile());
             Set<String> uniqueWords = new HashSet<>();
             String fileText = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
             String[] textArray = StringUtils.split(fileText);
