@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.threads;
 
-import com.solvd.filereader.FileReader;
+import com.solvd.insurancecompany.filereader.CustomFileReader;
 
 public class RunnableThread implements Runnable {
     private String fileName;
@@ -11,6 +11,6 @@ public class RunnableThread implements Runnable {
 
     @Override
     public void run() {
-        FileReader.readFile(fileName);
+        CustomFileReader.readFile(fileName);
     }
 }

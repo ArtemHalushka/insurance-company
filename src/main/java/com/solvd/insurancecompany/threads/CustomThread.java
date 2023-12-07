@@ -1,6 +1,6 @@
 package com.solvd.insurancecompany.threads;
 
-import com.solvd.filereader.FileReader;
+import com.solvd.insurancecompany.filereader.CustomFileReader;
 
 public class CustomThread extends Thread {
     private String fileName;
@@ -11,6 +11,6 @@ public class CustomThread extends Thread {
 
     @Override
     public void run() {
-        FileReader.readFile(fileName);
+        CustomFileReader.readFile(fileName);
     }
 }
