@@ -3,7 +3,6 @@ package com.solvd.insurancecompany;
 import com.solvd.insurancecompany.company.InsuranceCompany;
 import com.solvd.insurancecompany.connectionpool.ConnectionPool;
 import com.solvd.insurancecompany.exceptions.*;
-import com.solvd.insurancecompany.filereader.CustomFileReader;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.objects.HealthDisease;
 import com.solvd.insurancecompany.objects.Medication;
@@ -82,8 +81,10 @@ public class Main {
             customThreadFileReader.start();
             ConnectionPool connectionPool = new ConnectionPool("input.txt");
             CustomThread thread1 = connectionPool.getConnection();
+            thread1.start();
             connectionPool.releaseConnection(thread1);
             CustomThread thread2 = connectionPool.getConnection();
+            thread2.start();
 
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
                  ParseException | InvalidPersonException | ClassNotFoundException | InstantiationException |
