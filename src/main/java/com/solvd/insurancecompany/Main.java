@@ -25,7 +25,7 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         InsuranceCompany insuranceCompany = new InsuranceCompany("Reico");
         boolean michaelIsSmoker = true;
@@ -80,10 +80,10 @@ public class Main {
             runnableThreadFileReader.start();
             customThreadFileReader.start();
             ConnectionPool connectionPool = new ConnectionPool("input.txt");
-            CustomThread thread1 = connectionPool.getConnection();
+            CustomThread thread1 = connectionPool.getConnection("input.txt");
             thread1.start();
             connectionPool.releaseConnection(thread1);
-            CustomThread thread2 = connectionPool.getConnection();
+            CustomThread thread2 = connectionPool.getConnection("input.txt");
             thread2.start();
 
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |

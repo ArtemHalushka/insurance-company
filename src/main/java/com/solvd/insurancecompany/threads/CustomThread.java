@@ -9,6 +9,14 @@ public class CustomThread extends Thread {
         this.fileName = fileName;
     }
 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void joinThread() throws InterruptedException {
+        this.join();
+    }
+
     @Override
     public void run() {
         CustomFileReader.readFile(fileName);

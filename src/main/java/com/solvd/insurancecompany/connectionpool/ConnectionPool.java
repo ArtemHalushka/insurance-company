@@ -1,6 +1,5 @@
 package com.solvd.insurancecompany.connectionpool;
 
-import com.solvd.insurancecompany.filereader.CustomFileReader;
 import com.solvd.insurancecompany.threads.CustomThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,26 +19,28 @@ public class ConnectionPool {
         }
     }
 
-    public CustomThread getConnection() {
+    public CustomThread getConnection(String fileName) {
         if (availableConnections.size() == 0) {
             LOGGER.info("No any available connection, Try connect later.");
             return null;
         } else {
-            CustomThread connection =
-                    availableConnections.remove(
-                            availableConnections.size() - 1);
+            CustomThread connection = new CustomThread(fileName);
+            availableConnections.remove(availableConnections.size() - 1);
+            connection.setFileName(fileName);
             usedConnections.add(connection);
             return connection;
         }
     }
 
-    public boolean releaseConnection(CustomThread connection) {
+    public boolean releaseConnection(CustomThread connection) throws InterruptedException {
         if (null != connection) {
+            connection.joinThread();
             usedConnections.remove(connection);
             availableConnections.add(connection);
             return true;
         }
         return false;
     }
+
 }
 
