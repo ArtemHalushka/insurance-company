@@ -1,13 +1,16 @@
 package com.solvd.insurancecompany;
 
 import com.solvd.insurancecompany.company.InsuranceCompany;
+import com.solvd.insurancecompany.connectionpool.ConnectionPool;
 import com.solvd.insurancecompany.exceptions.*;
+import com.solvd.insurancecompany.filereader.CustomFileReader;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.objects.HealthDisease;
 import com.solvd.insurancecompany.objects.Medication;
 import com.solvd.insurancecompany.people.Customer;
 import com.solvd.insurancecompany.people.Employee;
-import com.solvd.insurancecompany.util.Printer;
+import com.solvd.insurancecompany.threads.CustomThread;
+import com.solvd.insurancecompany.threads.RunnableThread;
 import org.apache.logging.log4j.*;
 
 import java.lang.reflect.Constructor;
@@ -18,12 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         InsuranceCompany insuranceCompany = new InsuranceCompany("Reico");
         boolean michaelIsSmoker = true;
@@ -72,6 +76,20 @@ public class Main {
             insuranceCompany.addInsuranceList("HomeInsurances", homeInsuranceList);
             insuranceCompany.addInsuranceList("HealthInsurances", healthInsuranceList);
             LOGGER.info(insuranceCompany.getCustomersList());
+
+            Thread runnableThreadFileReader = new Thread(new RunnableThread("input1.txt"));
+            CustomThread customThreadFileReader = new CustomThread("input2.txt");
+            runnableThreadFileReader.start();
+            customThreadFileReader.start();
+            ConnectionPool connectionPool = new ConnectionPool("input.txt");
+            CustomThread thread1 = connectionPool.getConnection("input.txt");
+            thread1.start();
+            connectionPool.releaseConnection(thread1);
+            CustomThread thread2 = connectionPool.getConnection("input.txt");
+            thread2.start();
+            connectionPool.releaseConnection(thread2);
+            CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> CustomFileReader.readFile("input.txt"));
+            completableFuture.join();
 
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
                  ParseException | InvalidPersonException | ClassNotFoundException | InstantiationException |
