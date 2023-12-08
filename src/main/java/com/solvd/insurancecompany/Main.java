@@ -3,6 +3,7 @@ package com.solvd.insurancecompany;
 import com.solvd.insurancecompany.company.InsuranceCompany;
 import com.solvd.insurancecompany.connectionpool.ConnectionPool;
 import com.solvd.insurancecompany.exceptions.*;
+import com.solvd.insurancecompany.filereader.CustomFileReader;
 import com.solvd.insurancecompany.insurances.*;
 import com.solvd.insurancecompany.objects.HealthDisease;
 import com.solvd.insurancecompany.objects.Medication;
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class Main {
 
@@ -85,6 +87,9 @@ public class Main {
             connectionPool.releaseConnection(thread1);
             CustomThread thread2 = connectionPool.getConnection("input.txt");
             thread2.start();
+            connectionPool.releaseConnection(thread2);
+            CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> CustomFileReader.readFile("input.txt"));
+            completableFuture.join();
 
         } catch (InvalidPriceException | InvalidM2Exception | InvalidInsureObjectException | StringLengthException |
                  ParseException | InvalidPersonException | ClassNotFoundException | InstantiationException |
